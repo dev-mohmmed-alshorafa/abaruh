@@ -2,8 +2,11 @@ import {configureStore,createSlice} from '@reduxjs/toolkit'
 const countSlice=createSlice({
   name:'counter',
   initialState:{
-    count:{
-      id:0
+    user:{
+      id:1,
+      name:'mohmmed alabdullah',
+      email:'mohmmedalshorafa@gmail.com',
+      img:null
     }
   },
   reducers:{
