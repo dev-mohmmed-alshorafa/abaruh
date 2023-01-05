@@ -1,0 +1,41 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+
+
+}
+
+.tab img {
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--main-color);
+  width: 83px;
+  height: 83px;
+  padding: 10px;
+  border-radius: 50%;
+
+}
+
+.name-tab {
+  text-align: center;
+  color: var(--main-color);
+}
+
+@media (min-width: 700px) {
+  .tabs {
+    margin-top: 50px;
+  }
+
+  .products-section h4 {
+    text-align: center;
+    font-size: 25px;
+    margin: 30px 0;
+  }
+
+  .products {
+    gap: 30px !important;
+  }
+}
