@@ -13,18 +13,18 @@ const [isOn,setIsOn]=useState(false)
   return (
     <div className='info'>
     <section className='info-t'>
-       <div>
+       <Link to='/orders'>
         <img src='./icons/order.png' alt=''/>
-      <Link to='/orders'>{t("info.order")}</Link>
-      </div>
-      <div>
+      <p>{t("info.order")}</p>
+      </Link>
+      <Link to='/addresses'>
         <img src='./icons/adress.png' alt=''/>
-      <Link to='/addresses'>{t("info.addresses")}</Link>
-      </div>
-      <div>
+      <p>{t("info.addresses")}</p>
+      </Link>
+      <Link to='/privacy'>
         <img src='./icons/policy.png' alt=''/>
-      <Link to='/privacy'>{t("info.privacy")}</Link>
-      </div>
+      <p>{t("info.privacy")}</p>
+      </Link>
       <div className='lng'>
         <p>English</p>
         <div className='lng-btns'>
