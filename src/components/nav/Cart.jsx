@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Cart() {
   return (
-    <Link>
+    <Link className='cart'>
             <img src="./icons/shopping.png" alt="" />
     </Link>
   )

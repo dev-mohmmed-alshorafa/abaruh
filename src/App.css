@@ -7,11 +7,12 @@
 body {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 
 }
 
 :root {
   --main-color: #3351A6;
   --secondary-color: #ffffff;
+  --success-color: #d9d9d9;
 }

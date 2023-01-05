@@ -6,27 +6,24 @@ import { useState } from 'react';
 function Search({isSearch,setIsSearch}) {
   const handleClickOutside = () => {
     setIsSearch('search')
-
   };
-  const openSearch=(e)=>{
-    e.preventDefault()
-    setIsSearch('search-active')
+  const openSearch=()=>{
+    setIsSearch('search-continuer')
   }
   const ref = useOutsideClick(handleClickOutside);
 
   return (
-    <div   ref={ref} >
-      <form className={isSearch} action="">
-      <input className='input-search'  id="inputSearch" name="inputSearch" type="text" />
-
-      <label onClick={openSearch} htmlFor="inputSearch">   
+ <div className={isSearch} >
+ <div ref={ref} >
+      <button style={{display: isSearch==='search-continuer'?'none':'block'}} onClick={openSearch} htmlFor="inputSearch">   
          <img src="./icons/search.png" alt="" />
-</label>
+      </button>
+{isSearch==='search-continuer'?<InputSearch/>:''}
      
-      </form>
-      <InputSearch/>
  
     </div>
+    </div>
+   
    
   )
 }

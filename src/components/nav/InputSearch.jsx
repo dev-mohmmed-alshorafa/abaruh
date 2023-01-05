@@ -2,8 +2,10 @@ import React from 'react'
 
 function InputSearch() {
   return (
-    <div >
-    </div>
+      <form className='search-from'>
+        <input placeholder='Search' type="text" />
+        <button>search</button>
+      </form>
   )
 }
 
