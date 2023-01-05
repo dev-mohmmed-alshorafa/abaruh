@@ -1,5 +1,6 @@
 import React from 'react'
 import {  useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
 
 function Product({product}) {
   const { t } = useTranslation();
@@ -10,7 +11,9 @@ function Product({product}) {
       <h3 className='name'>{product.name}</h3>
       <p className='describtion'>{product.describtion}</p>
       <p className='price'>{product.price} SAR</p>
-      <button>{t("cart")}</button>
+      <Link to={`/product/${product.id}`}>
+    {t("cart")}
+      </Link>
     </div>
   )
 }

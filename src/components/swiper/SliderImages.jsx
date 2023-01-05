@@ -1,11 +1,11 @@
 import React from 'react'
 
-function SliderImages({image,swipImg}) {
+function SliderImages({swipImg,isActive}) {
   return (
-    <div style={{left:`${image}vw`}} className='slider-images'>
+    <div className='slider'>
       {
-       swipImg.map((e,i)=> <div key={i}>
-       <img src={e} /> </div>) 
+       swipImg.map((e,i)=> <div className={isActive%3!==i?'img-slider':'img-slider-active'} key={i}>
+       <img  src={e} /> </div>) 
       }
     </div>
   )

@@ -7,12 +7,14 @@ import store from './Redux'
 import "./i18n";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from './Pages/Home';
+import Product from './Pages/Product';
 const router = createHashRouter([
   {
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <Home /> },
+      { index: true, element: <Home /> },
+      { path: '/product/:id', element: <Product /> },
     ],
     // errorElement: <NotFound />,
 

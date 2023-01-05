@@ -1,19 +1,42 @@
 .tabs {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
   margin-top: 18px;
-  flex-wrap: wrap;
+  padding: 10px 22px 25px 22px;
+  overflow-x: scroll;
 
+}
 
+.tabs::-webkit-scrollbar {
+  width: 12px;
+  /* width of the entire scrollbar */
+}
+
+.tabs::-webkit-scrollbar-track {
+  background: rgba(255, 166, 0, 0);
+  /* color of the tracking area */
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 255, 0);
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid rgba(255, 166, 0, 0);
+  /* creates padding around scroll thumb */
+}
+
+.tab {
+  height: 73px;
 }
 
 .tab img {
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--main-color);
-  width: 83px;
-  height: 83px;
+  width: 63px;
+  height: 63px;
   padding: 10px;
   border-radius: 50%;
 
@@ -21,12 +44,16 @@
 
 .name-tab {
   text-align: center;
+  font-size: 12px;
   color: var(--main-color);
 }
 
 @media (min-width: 700px) {
   .tabs {
     margin-top: 50px;
+    gap: 20px;
+    justify-content: space-evenly;
+
   }
 
   .products-section h4 {
@@ -37,5 +64,11 @@
 
   .products {
     gap: 30px !important;
+  }
+
+  .name-tab {
+    text-align: center;
+    font-size: 16px;
+    color: var(--main-color);
   }
 }

@@ -27,6 +27,8 @@ function Menu() {
   const ref = useOutsideClick(handleClickOutside);
 
   return (
+    <div className='mune-Item' >
+
     <div>
     <div className={isActive.elementsNav}>
 <div ref={ref}>
@@ -37,6 +39,8 @@ function Menu() {
     </div>
     </div>
     </div>
+    </div>
+
 
   )
 }

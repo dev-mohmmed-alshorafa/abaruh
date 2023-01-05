@@ -26,6 +26,16 @@ const filters=[{
   activeIme:'./filters/couchB.png',
   name:'Furniture'
 
+},{
+  img:'./filters/couch.png',
+  activeIme:'./filters/couchB.png',
+  name:'Furniture'
+
+},{
+  img:'./filters/couch.png',
+  activeIme:'./filters/couchB.png',
+  name:'Furniture'
+
 }]
 
 function Tabs() {

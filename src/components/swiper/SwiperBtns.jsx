@@ -1,16 +1,18 @@
 import React from 'react'
 
-function SwiperBtns({image,changeImg,count}) {
+function SwiperBtns({isActive,setIsActive}) {
   const next=()=>{
-    if(image/100>-1*(count-1) ){
-      changeImg(image-100)
-    }
+   
+      setIsActive(isActive+1) 
+      console.log(isActive);
+       
   }
   const back=()=>{
-    if(image/100<=-1 ){
-      changeImg(image+100)
 
-    }
+      setIsActive(isActive+1) 
+
+      console.log(isActive);
+
     }
   return (
     <div className='swiper-btns'>

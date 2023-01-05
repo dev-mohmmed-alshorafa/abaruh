@@ -7,7 +7,7 @@ const products=[{
   id:0,
   name:'Woman Ring',
   describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  Fuga dignissimos accusamus, dolores esse tempora, officiis eos quos dolor,`,
+ `,
     img:'./products/1.png',
     price:100
 },
@@ -15,7 +15,7 @@ const products=[{
   id:1,
   name:'Woman wallet',
   describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  Fuga dignissimos accusamus, dolores esse tempora, officiis eos quos dolor,`,
+ `,
     img:'./products/2.png',
     price:100
 
@@ -24,7 +24,7 @@ const products=[{
   id:2,
   name:'Woman bag',
   describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  Fuga dignissimos accusamus, dolores esse tempora, officiis eos quos dolor,`,
+ `,
     img:'./products/3.png',
     price:100
 
@@ -33,8 +33,7 @@ const products=[{
   id:3,
   name:'Woman Shoes',
   describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.
-   Fuga dignissimos accusamus, dolores esse tempora, officiis eos quos dolor,
-    `,
+  `,
     img:'./products/4.png',
     price:100
 

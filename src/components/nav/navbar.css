@@ -16,7 +16,7 @@
 }
 
 .navbar button img {
-  width: 27px;
+  width: 25px;
 }
 
 .logo {
@@ -37,7 +37,9 @@
   align-items: center;
   align-items: center;
 }
-
+.elements-nav{
+  width: 50px;
+}
 .elements-nav-active {
   position: absolute;
   width: 100%;
@@ -74,6 +76,9 @@
   transition: 0.15s linear;
   z-index: -50;
 
+}
+.mune-Item{
+  width: 50px;
 }
 
 .items-Active {
@@ -160,9 +165,9 @@
 .info div {
   display: flex;
   text-decoration: none;
-  font-size: 16px;
   font-weight: 700;
   gap: 10px;
+  font-size: 12px;
   justify-content: space-between;
   align-items: center;
   width: 70%;
@@ -173,10 +178,11 @@
 }
 
 .info a p {
-  font-weight: 700;
-  line-height: 16px;
+  font-weight: 600;
   color: var(--main-color);
   width: 55%;
+  font-size: 12px;
+
 
 }
 
@@ -339,7 +345,9 @@
   .cart img {
     width: 40px;
   }
-
+  .mune-Item{
+    width: 80px;
+  }
   .search-from {
     width: 50%;
     margin: auto;

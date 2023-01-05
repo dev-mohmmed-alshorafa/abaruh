@@ -1,8 +1,8 @@
 .swiper {
   position: relative;
-  height: 40vh;
+  height: 24vh;
   z-index: 1;
-  overflow-x: hidden;
+  overflow: hidden;
 
 }
 
@@ -19,22 +19,51 @@
 
 }
 
+.img-slider-active {
+  height: 24vh;
+  width: 100%;
+}
+
 .swiper-btns button {
   border: none;
-  margin: 0 30px;
+  margin: 0 6px;
   font-size: 35px;
   background-color: rgba(240, 248, 255, 0);
 
 }
 
-.slider-images div {
-  height: 40vh;
+.img-slider-active {
+  position: absolute;
+  top: 0;
+
+  height: 24vh;
   width: 100%;
+  transition: 0.4s linear;
+
 }
 
-.slider-images img {
+.img-slider-active img {
   width: 100vw;
   height: 100%;
+  object-fit: cover;
+
+
+
+}
+
+
+
+.img-slider {
+  width: 0;
+  transition: 1s linear;
+  height: 100%;
+}
+
+.img-slider img {
+  width: 0;
+  height: 100%;
+  transition: 0.7s linear;
+
 
 }
 
@@ -45,12 +74,22 @@
   transition: 0.4s linear;
 }
 
+.swiper-btns img {
+  width: 20px;
+}
+
+.img-slider {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
 @media (min-width: 767px) {
   .swiper {
     height: 70vh;
   }
 
-  .slider-images div {
+  .img-slider-active {
     height: 70vh;
 
   }
