@@ -8,6 +8,7 @@ import "./i18n";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from './Pages/Home';
 import Product from './Pages/Product';
+import Cart from './Pages/Cart';
 const router = createHashRouter([
   {
     path: '/',
@@ -15,6 +16,7 @@ const router = createHashRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/product/:id', element: <Product /> },
+      { path: '/cart', element: <Cart /> },
     ],
     // errorElement: <NotFound />,
 

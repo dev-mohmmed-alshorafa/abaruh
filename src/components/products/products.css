@@ -17,8 +17,15 @@
   margin: 7px auto 30px auto;
 
 }
-
-.product a {
+.product a{
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.product button {
   border-radius: 0 0 20px 20px;
   background-color: var(--main-color);
   border: none;

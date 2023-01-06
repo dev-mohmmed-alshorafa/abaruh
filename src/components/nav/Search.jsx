@@ -1,7 +1,6 @@
 import React from 'react'
 import useOutsideClick from '../../hook/UseOutsideClick';
 import InputSearch from './InputSearch';
-import { useState } from 'react';
 
 function Search({isSearch,setIsSearch}) {
   const handleClickOutside = () => {
@@ -14,8 +13,10 @@ function Search({isSearch,setIsSearch}) {
 
   return (
  <div className={isSearch} >
+
  <div ref={ref} >
-      <button style={{display: isSearch==='search-continuer'?'none':'block'}} onClick={openSearch} htmlFor="inputSearch">   
+      <button style={{display: isSearch==='search-continuer'?'none':'block'}}
+       onClick={openSearch} htmlFor="inputSearch">   
          <img src="./icons/search.png" alt="" />
       </button>
 {isSearch==='search-continuer'?<InputSearch/>:''}

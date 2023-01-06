@@ -7,12 +7,26 @@ const countSlice=createSlice({
       name:'mohmmed alabdullah',
       email:'mohmmedalshorafa@gmail.com',
       img:null
-    }
+    },
+    cart:[],
+    total:0
   },
   reducers:{
     inc(state,action){
 state.count.id=5
     },
+    addToCart(state,action){
+      state.cart=[...state.cart,action.payload]
+    },
+    addition(state,action){
+      state.total+=action.payload
+    },
+    subtraction(state,action){
+      state.total-=action.payload
+    },
+    delete(state,action){
+      state.cart=state.cart.filter(e=>e.id !==action.payload)
+    }
 //     dec(state,action){
 // state.count+=action.payload
 //     }
