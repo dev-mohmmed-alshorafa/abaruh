@@ -2,7 +2,7 @@ import React from 'react'
 import useOutsideClick from '../../hook/UseOutsideClick';
 import Elements from './ElementsNavBar';
 import { useState } from 'react';
-function Menu() {
+function Menu({setIsStiacky}) {
   const [isActive,setIsActive]=useState({
     elementsNav:'elements-nav',
     menu:'menu',
@@ -10,6 +10,7 @@ function Menu() {
 
   })
   const handleClickOutside = () => {
+    setIsStiacky(false)
     setIsActive({
       elementsNav:'elements-nav',
     menu:'menu',
@@ -17,6 +18,7 @@ function Menu() {
     })
   };
   const showMenu=()=>{
+    setIsStiacky(true)
     setIsActive({
       elementsNav:'elements-nav-active',
     menu:'menu-active',

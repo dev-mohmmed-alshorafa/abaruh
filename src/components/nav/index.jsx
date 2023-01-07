@@ -9,10 +9,10 @@ import { useState } from 'react'
 function Nav() {
   
   const [isSearch,setIsSearch]=useState('search')
-
+  const [isStiacky,setIsStiacky]=useState(false)
   return (
-    <main className='navbar'>
-      <Menu/>
+    <main style={{position:!isStiacky?'sticky':'static'}}  className='navbar'>
+      <Menu setIsStiacky={setIsStiacky} />
       <Logo isSearch={isSearch}/>
       <section className='search-cart'>
         <Search isSearch={isSearch} setIsSearch={setIsSearch}/>

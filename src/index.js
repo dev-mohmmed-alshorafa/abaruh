@@ -9,6 +9,9 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from './Pages/Home';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
+import Orders from './Pages/Orders';
+import Order from './Pages/Order';
+import Address from './Pages/Address';
 const router = createHashRouter([
   {
     path: '/',
@@ -17,6 +20,9 @@ const router = createHashRouter([
       { index: true, element: <Home /> },
       { path: '/product/:id', element: <Product /> },
       { path: '/cart', element: <Cart /> },
+      { path: '/orders', element: <Orders /> },
+      { path: '/orders/:id', element: <Order /> },
+      { path: '/addresses', element: <Address /> },
     ],
     // errorElement: <NotFound />,
 
