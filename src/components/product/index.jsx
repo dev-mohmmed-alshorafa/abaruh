@@ -10,7 +10,7 @@ function Product({product}) {
   const { t } = useTranslation();
   const dispatch=useDispatch()
 const addToMyCart=()=>{
-  if(!cart.find(e=>e.id===product.id)){
+  if(!cart.find(e=>e._id===product._id)){
     dispatch(actions.addToCart(product))
     dispatch(actions.addition(product.price))
 
@@ -18,10 +18,10 @@ const addToMyCart=()=>{
 }
   return (
     <div className='product'>
-      <Link  to={`/product/${product.id}`}>
-      <img style={{width:'100px'}} src={product.img} alt="" />
+      <Link  to={`/product/${product._id}`}>
+      <img style={{width:'100px'}} src={product.imageProduct} alt="" />
       <h3 className='name'>{product.name}</h3>
-      <p className='describtion'>{product.describtion}</p>
+      <p className='describtion'>{product.description}</p>
       <p className='price'>{product.price} SAR</p>
       </Link>
       <button onClick={addToMyCart} >

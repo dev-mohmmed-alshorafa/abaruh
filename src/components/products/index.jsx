@@ -9,7 +9,7 @@ function Products({products}) {
       </h4>
       <div className='products'>
         {
-          products.map(e=> <Product key={e.id} product={e}/> )
+          products.map(e=> <Product key={e._id} product={e}/> )
         }
       </div>
       
