@@ -1,0 +1,28 @@
+.my-products{
+  margin-top: 80px;
+}
+.add-product-btn{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 24px;
+}
+.add-product-btn p{
+  font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+}
+.add-product-btn a{
+  text-decoration: none;
+  
+  background: #3351A6;
+border-radius: 10px;
+padding: 8px 31px;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+text-align: center;
+border: none;
+color: #FFFFFF;
+}

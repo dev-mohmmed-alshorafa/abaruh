@@ -2,7 +2,7 @@ import React from 'react'
 import useOutsideClick from '../../hook/UseOutsideClick';
 import InputSearch from './InputSearch';
 
-function Search({isSearch,setIsSearch}) {
+function Search({isSearch,setIsSearch,textSearch,setTextSearch,setProducts}) {
   const handleClickOutside = () => {
     setIsSearch('search')
   };
@@ -19,7 +19,11 @@ function Search({isSearch,setIsSearch}) {
        onClick={openSearch} htmlFor="inputSearch">   
          <img src="./icons/search.png" alt="" />
       </button>
-{isSearch==='search-continuer'?<InputSearch/>:''}
+{isSearch==='search-continuer'?<InputSearch
+setIsSearch={setIsSearch}
+ textSearch={textSearch}
+        setProducts={setProducts}
+         setTextSearch={setTextSearch}/>:''}
      
  
     </div>

@@ -2,17 +2,17 @@ import React from 'react'
 import UserInfo from './UserInfo'
 import Info from './Info'
 import LogoutBtn from './LogoutBtn'
-
-function Items({items}) {
-
+import { useSelector } from 'react-redux'
+import Signs from './Signs'
+function Items({ items }) {
+  const user = useSelector((state) => state.user)
   return (
     <div className={items}>
-      <div>
-      <UserInfo/> 
-     <Info/>
+      <div className="signs">
+        {user ? <UserInfo user={user} /> : <Signs />}
+        <Info user={user} />
       </div>
-    
-<LogoutBtn/>
+      {user && <LogoutBtn />}
     </div>
   )
 }

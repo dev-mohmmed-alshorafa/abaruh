@@ -7,7 +7,7 @@
 body {
   min-height: 100vh;
   position: relative;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 
 }
 
@@ -22,4 +22,20 @@ body {
 }
 .my-address{
   padding:31px 21px;
+} 
+label,button{
+  cursor: pointer !important;
+}
+.show-forms{
+  position: absolute;
+  top: 0;
+  z-index: 20;background: white;
+  height: 100vh;
+  width: 100%;
+}
+.back-f{
+width: 30px;
+position: fixed;
+top :45px;
+left: 20px;
 }

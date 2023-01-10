@@ -1,13 +1,20 @@
 import React from 'react'
-
-function SliderImages({swipImg,isActive}) {
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+function SliderImages({swipImg}) {
   return (
-    <div className='slider'>
-      {
-       swipImg.map((e,i)=> <div className={isActive%3!==i?'img-slider':'img-slider-active'} key={i}>
-       <img  src={e} /> </div>) 
-      }
-    </div>
+      <Carousel className='slider' showIndicators={false} autoPlay={true} infiniteLoop={true} showStatus={false}>
+        {
+swipImg.map(e=> <div key={e}>
+  <img
+    src={e}
+    alt=""
+  />
+</div>)
+        }
+       
+      
+      </Carousel>
   )
 }
 

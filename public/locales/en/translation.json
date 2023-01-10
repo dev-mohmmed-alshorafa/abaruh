@@ -1,20 +1,14 @@
 {
   "info": {
-    "order": "my orders",
+    "myorder": "my orders",
     "addresses": " my addresses",
-    "privacy": "privacy and policy"
+    "privacy": "privacy and policy",
+    "dashboard":"dashboard",
+    "orders":"orders",
+    "products":"my products"
+
   },
   "cart": "Add to cart",
-  "filterss":{
-"apparel":"Apparel"
-  },
-  "filters": [
-    "Apparel",
-    "Shoes",
-    "Faces",
-    "home",
-    "Furniture"
-  ],
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."

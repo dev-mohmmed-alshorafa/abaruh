@@ -15,6 +15,7 @@
   width: 160px !important;
   height: 160px !important;
   margin: 7px auto 30px auto;
+  object-fit: cover;
 
 }
 .product a{
@@ -37,7 +38,6 @@
 }
 
 .product {
-  width: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -67,8 +67,28 @@
   font-weight: 300;
   font-size: 12px;
   line-height: 15px;
-
+  
   color: #B6B6B6;
   padding: 0 17px;
 
+}
+.notAvailable{
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 25px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.product{
+  position: relative;
+}
+#edit-product{
+  position: absolute;
+  top: -17px;
+  width: 25px !important;
+  height: 25px !important;
+  right: 8px;
 }

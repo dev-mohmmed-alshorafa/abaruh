@@ -23,6 +23,7 @@ border-radius: 20px;
 }
 .item-cart-img{
   width: 98px;
+  height: 98px;
   border-radius: 20px;
   margin-top: 8px;
 
@@ -91,8 +92,10 @@ margin: 0 17px;
   color: #3351A6;
 
 }
-.total button{
+.total a,.total button{
   width: 100%;
+  text-align: center;
+  text-decoration: none;
   background: #3351A6;
 border-radius: 20px;
 padding: 10px 0;

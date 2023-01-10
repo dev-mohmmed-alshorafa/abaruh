@@ -36,6 +36,8 @@
 .product-describtion {
   font-weight: 300;
   font-size: 15px;
+  height: 150px;
+  overflow-y: scroll;
   line-height: 18px;
   color: var(--success-color);
   margin-bottom: 25px;

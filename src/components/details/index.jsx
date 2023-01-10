@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './details.css'
 import ColorsProduct from './ColorsProduct'
@@ -8,19 +8,26 @@ import useOutsideClick from '../../hook/UseOutsideClick';
 import SuccsessText from './SuccsessText'
 import { useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
+import { useParams } from 'react-router-dom';
+import Apiservices from '../../services/ApiServices'
 
 function DetailsProduct() {
   const [isActive,setIsActive]=useState(0)
   const [isAdd,setIsAdd]=useState(false)
-  const product ={
-    id:0,
-    name:'Woman Ring',
-    describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-   `,
-      img:'./products/ring.png',
-      price:100
-  }
+  const params = useParams();
+  const [product,setProduct]=useState({})
+  useEffect(()=>{
+    Apiservices(`/product?_id=${params.id}`).then(res=>setProduct(res.data.data[0]))
+  },[])
+  // const product ={
+  //   id:0,
+  //   name:'Woman Ring',
+  //   describtion:`Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  //   Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  //  `,
+  //     img:'./products/ring.png',
+  //     price:100
+  // }
   const dispatch=useDispatch()
 
   const handleClickOutside = () => {
@@ -41,7 +48,7 @@ function DetailsProduct() {
         <img  src="./back.png" alt="" />
       </Link>
       <div className='details-one-product'>
-      <img className='details-product-img'  src={product.img} alt="" />
+      <img className='details-product-img'  src={product.imageProduct} alt="" />
         <section>
           <div className='name-price'>
           <h3>
@@ -53,7 +60,7 @@ function DetailsProduct() {
           </div>
          
           <p className='product-describtion'>
-          {product.describtion}
+          {product.description}
           </p>
           <div className='details-btn'>
           <button className={isActive===0?'active-btn-details':'btn-details'} onClick={()=>setIsActive(0)}>Product</button>

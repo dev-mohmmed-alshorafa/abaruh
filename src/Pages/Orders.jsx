@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Order from '../components/order'
 import OrderHeader from '../components/orderHedar'
 function Orders() {
+  // const [orders,setOrders]=useState([])
   const orders=[{
     id:1,
     name:'Vender Shop Name'

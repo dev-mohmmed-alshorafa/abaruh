@@ -51,9 +51,11 @@ padding: 12px ;
 ::placeholder {
   color: #3351A6;
 }
-.add-address-form button{
+.add-address-form a{
   background: #3351A6;
 border-radius: 20px;
+text-decoration: none;
+text-align: center;
 font-weight: 600;
 font-size: 20px;
 line-height: 24px;
@@ -93,6 +95,48 @@ color: var(--main-color);
   height: 15px;
   border-radius: 50%;
   border: 1px solid var(--main-color);
+}
+.active-edit{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.637);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-address-form{
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  width: 80%;
+}
+.edit-address-form p{
+  text-align: center;
+  font-weight: 700;
+  color: var(--main-color);
+}
+.edit-address-form button{
+  background: #3351A6;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+.edit-address-form input{
+  border: 1px solid #3351A6;
+border-radius: 20px;
+width: 100%;
+padding: 12px ;
 }
 @media (min-width: 767px) {
   .addresses{

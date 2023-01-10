@@ -4,54 +4,44 @@ import Swiper from '../components/swiper'
 import Tabs from '../components/tabs'
 import Products from '../components/products'
 import Apiservices from '../services/ApiServices'
-const products = [
-  {
-    id: 0,
-    name: 'Woman Ring',
-    describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
- `,
-    img: './products/1.png',
-    price: 100,
-  },
-  {
-    id: 1,
-    name: 'Woman wallet',
-    describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
- `,
-    img: './products/2.png',
-    price: 100,
-  },
-  {
-    id: 2,
-    name: 'Woman bag',
-    describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
- `,
-    img: './products/3.png',
-    price: 100,
-  },
-  {
-    id: 3,
-    name: 'Woman Shoes',
-    describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  `,
-    img: './products/4.png',
-    price: 100,
-  },
-]
+import { useSelector } from 'react-redux'
+import MyProducts from '../components/myProducts'
+
 function Home() {
   const [products, setProducts] = useState([])
+  const [categoryId, setCategoryId] = useState('63b9a8a2b64c3cc3a87ca1b1')
+  const [textSearch, setTextSearch] = useState('')
+  const user = useSelector((state) => state.user)
+
   useEffect(() => {
-    Apiservices.get('/product').then((res) => {
-      console.log(111111, res.data.data)
+    Apiservices.get(`/product?category=${categoryId}`).then((res) => {
       setProducts(res.data.data)
     })
-  }, [])
+  }, [categoryId])
   return (
     <div className="home">
-      <Nav />
-      <Swiper />
-      <Tabs />
-      <Products products={products} />
+      <Nav
+        textSearch={textSearch}
+        setTextSearch={setTextSearch}
+        setProducts={setProducts}
+      />
+      {user && user.role === 'merchant' ? (
+        <>
+        <MyProducts/>
+        </>
+      ) : (
+        <>
+          <Swiper />
+          <Tabs setCategoryId={setCategoryId} />
+          {products.length !== 0 ? (
+            <Products products={products} />
+          ) : (
+            <div className="notAvailable">
+              <p>No products are currently available</p>
+            </div>
+          )}
+        </>
+      )}
     </div>
   )
 }

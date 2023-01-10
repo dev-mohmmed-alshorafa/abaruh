@@ -1,0 +1,142 @@
+.signup-logo{
+  width: 115px;
+  height: 43px;
+  margin: 50px 0;
+}
+.signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 19px;
+}
+.signup input{
+  border: 1px solid #D9D9D9;
+border-radius: 20px;
+padding: 23px;
+margin-bottom: 28px;
+width: 100%;
+}
+.phone-num{
+  display: flex;
+  border: 1px solid #D9D9D9;
+  padding: 0;
+  border-radius: 20px;
+  align-items: center;
+  margin-bottom: 28px;
+
+
+}
+.phone-num input{
+  margin: 0;
+  border: none;
+  padding: 23px 23px 23px 0px;
+
+}
+.phone-num p{
+  width: 55px;
+  height: 100%;
+}
+.signup input::placeholder{
+  color: #D9D9D9;
+}
+.tearams{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.tearams input{
+  width: auto;
+  display: block;
+  margin-bottom: 0;
+}
+.tearams p{
+  font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+color: #D9D9D9;
+}
+.tearams span{
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  color: #3351A6;
+}
+.select-num{
+  padding: 0 10px;
+}
+.select-num input{
+  padding: 23px 0px;
+  width: 35px;
+}
+.signup-btn{
+  background: #3351A6;
+border-radius: 20px;font-weight: 600;
+font-size: 17px;
+line-height: 24px;
+text-align: center;
+
+color: #FFFFFF;
+width: 100%;
+padding: 18px;
+border: none;
+margin-top: 50px;
+}
+.verefiy{
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 211px;
+  align-items: center;
+}
+.verify-num{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.verify-num form {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.verify-num form input{
+  width: 50px;
+  border: 1px solid #D9D9D9;
+border-radius: 20px;
+height: 50px;
+}
+.verify-num span{
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  
+  color: #2F2D38;
+}
+.verify-num p{
+  font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+
+color: #DEDEDE;
+padding-top: 30px;
+}
+.verify-num h5{
+  font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+padding: 20px 0 40px 0;
+text-align: start;
+color: #3B579D;
+display: flex;
+align-self: flex-start;
+}
+.verify-num button{
+  background: #3351A6;
+border-radius: 20px;
+color: white;
+padding: 18px;
+width: 100%;
+border: none;
+margin-top: 48px;
+}

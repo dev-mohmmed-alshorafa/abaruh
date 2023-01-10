@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PersonalInfo from '../components/steps/PersonalInfo'
 import ShoppingInfo from '../components/steps/ShoppingInfo'
 import Payment from '../components/steps/Payment'
+import Address from '../components/steps/Address'
 
 function Checkout() {
   const [isActive, setisActive] = useState(0)
@@ -10,12 +11,12 @@ function Checkout() {
       num: 1,
       name: 'Personal Info',
     },
+    // {
+    //   num: 2,
+    //   name: 'Shipping Info',
+    // },
     {
       num: 2,
-      name: 'Shipping Info',
-    },
-    {
-      num: 3,
       name: 'Payment',
     },
   ]
@@ -38,11 +39,15 @@ function Checkout() {
         ))}
       </div>
       <div>
-        {isActive === 0 ? (
+           {isActive === 0 ? (
+          <Address setisActive={setisActive} />
+        ) : <Payment/> }
+
+        {/* {isActive === 0 ? (
           <PersonalInfo setisActive={setisActive} />
         ) :isActive === 1 ? (
           <ShoppingInfo setisActive={setisActive} />
-        ): <Payment/> }
+        ): <Payment/> } */}
       </div>
     </div>
   )

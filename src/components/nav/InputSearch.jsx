@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Apiservices from '../../services/ApiServices'
 
-function InputSearch() {
+function InputSearch({ textSearch, setTextSearch, setProducts, setIsSearch }) {
+  const handelSearch = (e) => {
+    e.preventDefault()
+    if (textSearch !== '') {
+      Apiservices.get(`/product?name[regex]=${textSearch}`).then((res) => {
+        setProducts(res.data.data)
+        setTextSearch('')
+        setIsSearch('search')
+      })
+    }
+  }
   return (
-      <form className='search-from'>
-        <input placeholder='Search' type="text" />
-        <button>search</button>
-      </form>
+    <form onSubmit={handelSearch} className="search-from">
+      <input
+        value={textSearch}
+        onChange={(e) => setTextSearch(e.target.value)}
+        placeholder="Search"
+        type="text"
+      />
+      <button>search</button>
+    </form>
   )
 }
 

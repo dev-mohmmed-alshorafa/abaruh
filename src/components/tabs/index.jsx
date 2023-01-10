@@ -1,58 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './tabs.css'
-import {  useTranslation } from "react-i18next";
-import Product from '../product';
+import Apiservices from '../../services/ApiServices'
 
-const filters=[{
-  img:'./filters/tshirt.png',
-  activeIme:'./filters/tshirtB.png',
-  name:"Apparel"
-},{
-  img:'./filters/shoes.png',
-  activeIme:'./filters/shoesB.png',
-  name:"Shoes"
-},{
-  img:'./filters/face.png',
-  activeIme:'./filters/faceB.png',
-  name:"Faces"
+function Tabs({ setCategoryId }) {
+  const [tabs, setTabs] = useState(0)
+  const [category, setCategory] = useState([])
+  useEffect(() => {
+    Apiservices.get('/category').then((res) => setCategory(res.data.data))
+  }, [])
 
-},{
-  img:'./filters/home.png',
-  activeIme:'./filters/homeB.png',
-  name:"home"
-
-},{
-  img:'./filters/couch.png',
-  activeIme:'./filters/couchB.png',
-  name:'Furniture'
-
-},{
-  img:'./filters/couch.png',
-  activeIme:'./filters/couchB.png',
-  name:'Furniture'
-
-},{
-  img:'./filters/couch.png',
-  activeIme:'./filters/couchB.png',
-  name:'Furniture'
-
-}]
-
-function Tabs() {
-  const [tabs,setTabs]=useState(0)
-
-  const getCategory=(i)=>{
+  const getCategory = (i) => {
     setTabs(i)
   }
   return (
-    <div className='tabs'>
-      {filters.map((e,i)=>  <div onClick={()=>getCategory(i)} className='tab' key={i}>
-          <img style={{background:i!==tabs?'linear-gradient(153.43deg, #3351A6 16.67%, #4265C9 100%)':"#ffff"}}
-           src={i===tabs?e.activeIme:e.img} alt="" />
-           <h3 className='name-tab'>{e.name}</h3>
-        </div>)
-      
-      }
+    <div className="tabs">
+      {category.map((e, i) => (
+        <div
+          onClick={() => {
+            setCategoryId(e._id)
+            getCategory(i)
+          }}
+          className="tab"
+          key={i}
+        >
+          <img
+            style={{
+              background:
+                i !== tabs
+                  ? 'linear-gradient(153.43deg, #3351A6 16.67%, #4265C9 100%)'
+                  : '#ffff',
+            }}
+            src={i === tabs ? e.activeImage : e.image}
+            alt=""
+          />
+          <h3 className="name-tab">{e.name}</h3>
+        </div>
+      ))}
     </div>
   )
 }

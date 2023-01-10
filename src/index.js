@@ -14,6 +14,9 @@ import Order from './Pages/Order';
 import Address from './Pages/Address';
 import AddAddress from './Pages/AddAddress';
 import Checkout from './Pages/Checkout';
+import Profile from './Pages/Profile';
+import AddProduct from './Pages/AddProduct';
+
 const router = createHashRouter([
   {
     path: '/',
@@ -22,11 +25,14 @@ const router = createHashRouter([
       { index: true, element: <Home /> },
       { path: '/product/:id', element: <Product /> },
       { path: '/cart', element: <Cart /> },
-      { path: '/orders', element: <Orders /> },
+      { path: '/myOrders', element: <Orders /> },
       { path: '/orders/:id', element: <Order /> },
       { path: '/addresses', element: <Address /> },
       { path: '/addAddress', element: <AddAddress /> },
       { path: '/checkout', element: <Checkout /> },
+      { path: '/profile', element: <Profile /> },
+      { path: '/addproduct', element: <AddProduct /> },
+      
     ],
     // errorElement: <NotFound />,
 

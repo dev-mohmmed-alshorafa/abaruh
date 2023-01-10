@@ -3,11 +3,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px ;
-  border-bottom: 0.5px solid rgba(168, 168, 168, 0.815);
   top: 0;
   z-index: 15;
-  margin: auto;
-  width: 100%;
+  /* margin: auto; */
+  width: 101%;
+  
   background-color: var(--secondary-color);
 
 }
@@ -324,6 +324,22 @@
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
 
+}
+.signs-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  justify-content: center;
+}
+.signs{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 50px;
+}
+.signs-btns a{
+  text-decoration: none;
+  
 }
 
 @media (min-width: 700px) {
