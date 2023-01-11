@@ -1,0 +1,50 @@
+.edit-form-countier{
+height: 100%;
+width: 100%;
+background: #00000085;
+position: absolute;
+top: 0;
+z-index: 25;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+right: 0;
+
+}
+.edit-form-countier form{
+  margin: auto;
+  background-color: white;
+  padding: 30px 20px 20px 20px;
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  width: 80%;
+  margin-top: 34%;
+  flex-direction: column;
+}
+.edit-form-countier form input,.edit-form-countier form textarea{
+padding: 15px;
+border: 1px solid #D9D9D9;
+border-radius: 20px;}
+.edit-form-countier form button{
+  border-radius: 20px !important;
+}
+.updateImg{
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid var(--main-color);
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+  color: var(--main-color);
+  font-weight: 700;
+
+}
+.updateImg img{
+  width: 34px !important;
+  height: 34px !important;
+  margin: 5px 0 0 0 !important;
+
+}

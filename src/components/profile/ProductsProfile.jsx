@@ -9,9 +9,8 @@ function ProductsProfile({ list, setList }) {
 
   useEffect(() => {
     if (user) {
-      Apiservices.get(`/product?merchant=${user._id}`).then((res) => {
+      Apiservices.get(`/product?merchant=${user._id||user.id}`).then((res) => {
         setProduct(res.data.data)
-        console.log(res.data.data)
       })
     }
   }, [user])

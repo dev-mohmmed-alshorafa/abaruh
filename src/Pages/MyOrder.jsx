@@ -1,8 +1,8 @@
 import React from 'react'
-import OrderInfo from '../components/order/OrderInfo'
+import OrderInfo from '../components/myOrder/OrderInfo'
 import { Link } from 'react-router-dom'
-import DelivaryDetails from '../components/order/DelivaryDetails'
-import OrderDetails from '../components/order/OrderDetails'
+import DelivaryDetails from '../components/myOrder/DelivaryDetails'
+import OrderDetails from '../components/myOrder/OrderDetails'
 
 function Order() {
   const order={
@@ -35,7 +35,7 @@ function Order() {
   }
   return (
     <div className='show-one-order'>
-       <Link className='backToHome' to={'/orders'}>
+       <Link className='backToHome' to={'/myOrders'}>
         <img  src="./back.png" alt="" />
       </Link>
       <div className='show-one-order-details'>

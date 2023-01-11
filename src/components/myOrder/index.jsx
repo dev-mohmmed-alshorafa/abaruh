@@ -4,7 +4,7 @@ import './order.css'
 import { Link } from 'react-router-dom'
 function index({order}) {
   return (
-    <Link to={`/orders/${order.id}`} className='order'>
+    <Link to={`/myOrders/${order.id}`} className='order'>
       <Avatar/>
       <div style={{display:'flex',justifyContent:'space-between',width:'98%',alignItems:'center'}}>
       <div className='order-info'>

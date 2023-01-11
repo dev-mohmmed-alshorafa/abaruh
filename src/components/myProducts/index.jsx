@@ -9,15 +9,17 @@ function MyProducts() {
   const user = useSelector((state) => state.user)
 
   useEffect(() => {
-    Apiservices.get(`/product?merchant=${user._id}`).then((res) =>
-      setProduct(res.data.data),
-    )
-  }, [])
+    if (user) {
+      Apiservices.get(`/product?merchant=${user._id||user.id}`).then((res) => {
+        setProduct(res.data.data)
+      })
+    }
+  }, [user])
   return (
-    <div className='my-products'>
-      <section className='add-product-btn'>
+    <div className="my-products">
+      <section className="add-product-btn">
         <p>My Product</p>
-        <Link to='addprodact'>Add Product</Link>
+        <Link to="/add-product">Add Product</Link>
       </section>
       <section>
         <Products products={products} />

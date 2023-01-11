@@ -56,7 +56,11 @@ function Payment() {
 
         <TotalCheckout paymentWay={payment} setIsDone={setIsDone} />
       </div>
-      {isDone && <Done setIsDone={setIsDone} />}
+      {isDone && <Done data={{
+            title: 'Order Placed!',
+            details:
+              'your order placed successfully for more details,check all orders page under profile tab.',
+          }} setIsDone={setIsDone} />}
     </div>
   )
 }

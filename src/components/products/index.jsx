@@ -2,6 +2,7 @@ import React from 'react'
 import Product from '../product'
 import './products.css'
 import { useSelector } from 'react-redux'
+import MerchantProduct from '../merchantProduct'
 function Products({ products }) {
   const user = useSelector((state) => state.user)
 
@@ -11,7 +12,7 @@ function Products({ products }) {
 
       <div className="products">
         {products.map((e) => (
-          <Product key={e._id} product={e} />
+          <MerchantProduct key={e._id} product={e} />
         ))}
       </div>
     </div>

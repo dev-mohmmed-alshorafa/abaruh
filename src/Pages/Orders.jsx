@@ -1,38 +1,32 @@
 import React, { useState } from 'react'
-import Order from '../components/order'
-import OrderHeader from '../components/orderHedar'
+import OrdersHeader from '../components/OrdersHeader'
+import OrdersTabs from '../components/ordersTabs'
+import Quotations from '../components/quotations-orders'
+import OrdersItems from '../components/quotations-orders/OrdersItems'
+import OrderState from '../components/orderState'
+import { useSelector } from 'react-redux'
+import NotAvailable from './NotAvailable'
+
 function Orders() {
-  // const [orders,setOrders]=useState([])
-  const orders=[{
-    id:1,
-    name:'Vender Shop Name'
-    ,price:2300,
-    orderNum:12345678
-    ,date:'01/01/2023'
-  },
-  {
-    id:2,
-    name:'Vender Shop Name'
-    ,price:2300,
-    orderNum:12345678
-    ,date:'01/01/2023'
-  },
-  {
-    id:3,
-    name:'Vender Shop Name'
-    ,price:2300,
-    orderNum:12345678
-    ,date:'01/01/2023'
-  }]
+  const [isMove, setIsMove] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+  const user = useSelector((state) => state.user)
+
+  if (!user || (user && user.role !== 'merchant')) {
+    return <NotAvailable />
+  }
   return (
     <div>
-      <OrderHeader/>
-      <div className='orders'>
-      {
-       orders.map(e=> <Order order={e} key={e.id}/> ) 
-      }
-      </div>
-     
+      <OrdersHeader setIsMove={setIsMove} isMove={isMove} />
+      {!isMove && <OrdersTabs isActive={isActive} setIsActive={setIsActive} />}
+
+      {!isMove && isActive ? (
+        <OrdersItems />
+      ) : !isMove && !isActive ? (
+        <Quotations setIsMove={setIsMove} isMove={isMove} />
+      ) : (
+        <OrderState setIsMove={setIsMove} isMove={isMove} />
+      )}
     </div>
   )
 }

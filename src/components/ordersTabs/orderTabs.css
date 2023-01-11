@@ -1,0 +1,11 @@
+.orders-tabs{
+  display: flex;
+  justify-content: space-around;
+
+}
+.orders-tabs p{
+  font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin: 20px 0 10px 0;
+}
