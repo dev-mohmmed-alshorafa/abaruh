@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Product from '../product'
 import './products.css'
 import { useSelector } from 'react-redux'
@@ -11,9 +11,15 @@ function Products({ products }) {
       {user && user.role === 'merchant' ? '' : <h4>New Proudacts</h4>}
 
       <div className="products">
-        {products.map((e) => (
-          <MerchantProduct key={e._id} product={e} />
-        ))}
+        {user && user.role === 'merchant'
+          ? products.map((e) => <MerchantProduct key={e._id} product={e} />)
+          : products.map((e) => (
+              <Product
+                key={e._id}
+                product={e}
+              />
+            ))}
+     
       </div>
     </div>
   )

@@ -18,7 +18,9 @@ function SelectRef({ data, isChoose, setIsChoose }) {
         onClick={openSelect}
         className="label-select"
       >
-        <p style={{color:data.includes(isChoose) &&'black'}}>{isChoose}</p>
+        <p style={{ color: data.includes(isChoose) && 'black' }}>
+          {isChoose.name}
+        </p>
         <img
           className={open ? 'open-select' : 'close-select'}
           src="./icons/darrow.png"
@@ -33,9 +35,9 @@ function SelectRef({ data, isChoose, setIsChoose }) {
                 type="radio"
                 onChange={() => setIsChoose(e)}
                 name={data[0]}
-                id={e}
+                id={e._id}
               />
-              <label htmlFor={e}>{e}</label>
+              <label htmlFor={e._id}>{e.name}</label>
             </div>
           ))}
         </div>

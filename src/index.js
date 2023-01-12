@@ -31,7 +31,7 @@ const router = createHashRouter([
       { path: '/addresses', element: <Address /> },
       { path: '/addAddress', element: <AddAddress /> },
       { path: '/checkout', element: <Checkout /> },
-      { path: '/store', element: <Profile /> },
+      { path: '/store/:id', element: <Profile /> },
       { path: '/add-product', element: <AddProduct /> },
       { path: '/orders', element: <Orders /> },
     ],

@@ -41,6 +41,12 @@ function TotalCheckout({ setIsDone, paymentWay }) {
       <button
         onClick={() => {
           if (paymentWay) {
+            console.log({
+              product: cartItems,
+              total: total,
+              addressId: addressId,
+              payment: paymentWay,
+            })
             Apiservices.post('/order', {
               product: cartItems,
               total: total,
@@ -53,7 +59,6 @@ function TotalCheckout({ setIsDone, paymentWay }) {
               dispatch(actions.zeroTotal())
             })
           }
-         
         }}
       >
         Checkout

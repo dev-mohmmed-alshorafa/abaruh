@@ -5,11 +5,18 @@ import './merchantProduct.css'
 import Apiservices from '../../services/ApiServices'
 function MerchantProduct({ product }) {
   const [isShow, setIsShow] = useState(false)
+  const [updateImg, setUpdateImg] = useState('')
   const [myProduct, setMyProduct] = useState(product)
   const [isUpdate, setIsUpdate] = useState(product)
   const handelUpdate = (e) => {
     e.preventDefault()
-    Apiservices.put(`/product/${myProduct._id}`, isUpdate).then((res) => {
+    const newData = new FormData()
+    newData.append('description', isUpdate.description)
+    newData.append('name', isUpdate.name)
+    newData.append('price', isUpdate.price)
+    newData.append('image', updateImg)
+
+    Apiservices.put(`/product/${myProduct._id}`, newData).then((res) => {
       setMyProduct(res.data.data)
       setIsShow(false)
     })
@@ -77,6 +84,7 @@ function MerchantProduct({ product }) {
                 type="file"
                 style={{ display: 'none' }}
                 name=""
+                onChange={(e) => setUpdateImg(e.target.files[0])}
                 id="updateImg"
               />
               <button>Update</button>

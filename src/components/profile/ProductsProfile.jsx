@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Apiservices from '../../services/ApiServices'
 import { useSelector } from 'react-redux'
 import ProductProfile from './ProductProfile'
+import { useParams } from 'react-router-dom'
 
 function ProductsProfile({ list, setList }) {
   const [products, setProduct] = useState([])
   const user = useSelector((state) => state.user)
-
+  const params=useParams()
   useEffect(() => {
     if (user) {
-      Apiservices.get(`/product?merchant=${user._id||user.id}`).then((res) => {
+      Apiservices.get(`/product?merchant=${params.id}`).then((res) => {
         setProduct(res.data.data)
       })
     }

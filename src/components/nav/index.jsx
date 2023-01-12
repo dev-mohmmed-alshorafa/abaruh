@@ -21,7 +21,7 @@ function Nav({ textSearch, setTextSearch, setProducts }) {
       <Menu setIsStiacky={setIsStiacky} />
       <Logo isSearch={isSearch} />
       {user && user.role === 'merchant' ? (
-        <Link to="/store">
+        <Link to={`/store/${user._id}`}>
           <img
             style={{ width: '25px', marginLeft: '25px' }}
             src="./icons/store.png"
