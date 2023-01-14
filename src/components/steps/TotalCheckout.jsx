@@ -44,13 +44,13 @@ function TotalCheckout({ setIsDone, paymentWay }) {
             console.log({
               product: cartItems,
               total: total,
-              addressId: addressId,
+              address: addressId,
               payment: paymentWay,
             })
             Apiservices.post('/order', {
               product: cartItems,
               total: total,
-              addressId: addressId,
+              address: addressId,
               payment: paymentWay,
             }).then((res) => {
               setIsDone(true)

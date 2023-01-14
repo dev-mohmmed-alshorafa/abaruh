@@ -7,7 +7,7 @@ function OrderDetails({order}) {
       <p className='details-orders-title'>Order Details</p>
       <div className='details-orders-items'>
       {
-        order.details.map(e=> <OrderDetailsItem details={e} key={e.id}/> )
+        order.product.map(e=> <OrderDetailsItem details={e} key={e._id}/> )
       }
       </div>
    

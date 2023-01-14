@@ -50,7 +50,17 @@ border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 15%;
+  justify-content: space-between;
   padding: 15px 15px 15px 5px;
+
+}
+.list-item a{
+  box-shadow: none;
+  border: none;
+}
+.grid-item a{
+  box-shadow: none;
+  border: none;
 
 }
 .list-item section{
@@ -69,6 +79,8 @@ border-radius: 20px;
   border: 1px solid #D9D9D9;
   border-radius: 20px;
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  text-decoration: none;
+  color: black;
 }
 .profile-product .name{
   font-weight: 600;
@@ -89,9 +101,10 @@ line-height: 17px;
   color: #3351A6;
 }
 .grid-item img{
-  margin: 7px auto 30px auto;
+  margin: 0px auto 15px auto;
   width: 160px;
 height: 160px;
+border-radius: 20px 20px 0 0;
 object-fit: cover;
 
 }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../Redux'
 import useOutsideClick from '../../hook/UseOutsideClick'
 import ConfirmMassage from '../products/ConfirmMassage'
+import { Link } from 'react-router-dom'
 
 function ProductProfile({ product, list, setList }) {
   const user = useSelector((state) => state.user)
@@ -26,7 +27,6 @@ function ProductProfile({ product, list, setList }) {
         console.log(2222)
       }
     }
-    
   }
   const handleClickOutside = () => {
     setIsActiveMassage(false)
@@ -39,16 +39,20 @@ function ProductProfile({ product, list, setList }) {
         list ? 'grid-item profile-product' : 'list-item profile-product'
       }
     >
-      <img src={product.imageProduct} alt="" />
-      <section>
-        <h3 className="name">{product.name}</h3>
-        <p style={{ padding: 0 }} className="describtion">
-          {product.description}
-        </p>
-        <p className="price">{product.price} SAR</p>
-      </section>
+      <Link to={`/product/${product._id}`}  className={
+        list ? 'grid-item profile-product' : 'list-item profile-product'
+      }>
+        <img src={product.imageProduct} alt="" />
+        <section>
+          <h3 className="name">{product.name}</h3>
+          <p style={{ padding: 0 }} className="describtion">
+            {product.description}
+          </p>
+          <p className="price">{product.price} SAR</p>
+        </section>
+      </Link>
       <div>
-        <div className={isActiveMassage?"active-massage-in-profile":''}>
+        <div className={isActiveMassage ? 'active-massage-in-profile' : ''}>
           <div ref={ref}>
             {user && user.role === 'merchant' ? (
               ''
@@ -61,7 +65,7 @@ function ProductProfile({ product, list, setList }) {
               </button>
             ) : (
               <img
-              style={{display: isActiveMassage && 'none'}}
+                style={{ display: isActiveMassage && 'none' }}
                 onClick={handelAddToCart}
                 className="add-product-from-store-icon"
                 src="./icons/addcart.png"

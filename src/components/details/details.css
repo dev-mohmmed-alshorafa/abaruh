@@ -11,6 +11,7 @@
 
 .details-product-img {
   width: 100%;
+  border-radius: 20px;
 }
 
 .name-price {
