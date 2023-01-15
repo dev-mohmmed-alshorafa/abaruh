@@ -5,6 +5,7 @@ import DelivaryDetails from '../components/myOrder/DelivaryDetails'
 import OrderDetails from '../components/myOrder/OrderDetails'
 import { useParams } from 'react-router-dom'
 import Apiservices from '../services/ApiServices'
+import BigOrder from '../components/Skeleton/BigOrder'
 function Order() {
   const params = useParams()
   const [order, setOrder] = useState({
@@ -15,22 +16,29 @@ function Order() {
     orderNum: '',
     createdAt: '',
   })
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
+    setIsLoading(true)
     Apiservices.get(`/order/${params.id}`).then((res) => {
-      console.log(res.data.data)
       setOrder(res.data.data)
+      setIsLoading(false)
     })
   }, [])
+
   return (
     <div className="show-one-order">
       <Link className="backToHome" to={'/myOrders'}>
         <img src="./back.png" alt="" />
       </Link>
-      <div className="show-one-order-details">
-        <OrderInfo order={order} />
-        <DelivaryDetails order={order} />
-        <OrderDetails order={order} />
-      </div>
+      {isLoading ? (
+        <BigOrder />
+      ) : (
+        <div className="show-one-order-details">
+          <OrderInfo order={order} />
+          <DelivaryDetails order={order} />
+          <OrderDetails order={order} />
+        </div>
+      )}
     </div>
   )
 }

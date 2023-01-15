@@ -51,7 +51,7 @@ padding: 12px ;
 ::placeholder {
   color: #3351A6;
 }
-.add-address-form a{
+.add-address-form button{
   background: #3351A6;
 border-radius: 20px;
 text-decoration: none;

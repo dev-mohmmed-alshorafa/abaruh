@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-function Nav({ textSearch, setTextSearch, setProducts }) {
+function Nav({ textSearch, setTextSearch, setProducts,setIsLoading }) {
   const user = useSelector((state) => state.user)
 
   const [isSearch, setIsSearch] = useState('search')
@@ -35,6 +35,7 @@ function Nav({ textSearch, setTextSearch, setProducts }) {
             setProducts={setProducts}
             setTextSearch={setTextSearch}
             isSearch={isSearch}
+            setIsLoading={setIsLoading}
             setIsSearch={setIsSearch}
           />
           <Cart />

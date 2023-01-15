@@ -1,6 +1,7 @@
 import React from 'react'
 
 function DelivaryDetails({ order }) {
+  console.log(order);
   return (
     <div className="delivery">
       <p>Delivery Address</p>

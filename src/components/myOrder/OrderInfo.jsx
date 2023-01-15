@@ -8,10 +8,10 @@ function OrderInfo({ order }) {
         <Avatar />
         <section>
           <div>
-            <p className="orderName">{order.merchantName}</p>
+            <p className="orderName">{order.merchantName || 'Order'}</p>
             <div className="order-div">
               <p>Order Number</p>
-              <span>{order.orderNum}</span>
+              <span>{order.orderNumber}</span>
             </div>
             <div className="order-div">
               <p>Date</p>

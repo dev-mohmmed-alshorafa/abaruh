@@ -15,12 +15,12 @@ function MyOrder({ order }) {
         }}
       >
         <div className="order-info">
-          <p className="order-name">{order.name}</p>
+          <p className="order-name">{order.TradeName?order.TradeName:'Order'}</p>
           <p className="order-price">{order.total} SAR</p>
         </div>
         <div style={{ paddingTop: '20px' }}>
           <p className="order-key">Order Number</p>
-          <p className="order-value">{order.orderNum}</p>
+          <p className="order-value">1423569</p>
           <p className="order-key">Date</p>
           <p className="order-value">{order.createdAt}</p>
         </div>

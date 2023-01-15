@@ -1,23 +1,34 @@
 import React, { useState } from 'react'
 import Apiservices from '../../services/ApiServices'
 import { Link } from 'react-router-dom'
-function Form() {
+import Loading from '../signLoading'
+function Form({ setIsAddress }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [addressForm, setAddressForm] = useState({
     addressName: '',
     address: '',
     city: '',
   })
   const addAddress = (e) => {
-    Apiservices.post('/address', addressForm).then(() => {
-      setAddressForm({
-        addressName: '',
-        address: '',
-        city: '',
+    setIsLoading(true)
+    e.preventDefault()
+    if (addressForm.addressName && addressForm.address && addressForm.city) {
+      Apiservices.post('/address', addressForm).then(() => {
+        setIsAddress(false)
+        setIsLoading(true)
+        setAddressForm({
+          addressName: '',
+          address: '',
+          city: '',
+        })
       })
-    })
+    }else{
+      setIsLoading(false)
+
+    }
   }
   return (
-    <div className="add-address-form">
+    <form className="add-address-form">
       <div className="inputs">
         <input
           placeholder="Address Name"
@@ -47,10 +58,11 @@ function Form() {
           required
         />
       </div>
-      <Link onClick={addAddress} to={'/addresses'}>
+      <button onClick={addAddress} to={'/addresses'}>
         Submit
-      </Link>
-    </div>
+      </button>
+      {isLoading && <Loading />}
+    </form>
   )
 }
 

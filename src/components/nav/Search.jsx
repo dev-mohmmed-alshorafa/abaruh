@@ -2,7 +2,7 @@ import React from 'react'
 import useOutsideClick from '../../hook/UseOutsideClick';
 import InputSearch from './InputSearch';
 
-function Search({isSearch,setIsSearch,textSearch,setTextSearch,setProducts}) {
+function Search({isSearch,setIsSearch,textSearch,setTextSearch,setProducts,setIsLoading}) {
   const handleClickOutside = () => {
     setIsSearch('search')
   };
@@ -22,6 +22,7 @@ function Search({isSearch,setIsSearch,textSearch,setTextSearch,setProducts}) {
 {isSearch==='search-continuer'?<InputSearch
 setIsSearch={setIsSearch}
  textSearch={textSearch}
+ setIsLoading={setIsLoading}
         setProducts={setProducts}
          setTextSearch={setTextSearch}/>:''}
      

@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import Apiservices from '../../services/ApiServices'
 
-function InputSearch({ textSearch, setTextSearch, setProducts, setIsSearch }) {
+function InputSearch({ textSearch, setTextSearch, setProducts, setIsSearch,setIsLoading }) {
   const handelSearch = (e) => {
     e.preventDefault()
     if (textSearch !== '') {
+      setIsLoading(true)
       Apiservices.get(`/product?name[regex]=${textSearch}`).then((res) => {
         setProducts(res.data.data)
         setTextSearch('')
         setIsSearch('search')
+        setIsLoading(false)
       })
     }
   }

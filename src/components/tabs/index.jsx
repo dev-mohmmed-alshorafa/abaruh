@@ -23,16 +23,28 @@ function Tabs({ setCategoryId }) {
           className="tab"
           key={i}
         >
-          <img
+          {
+            i === tabs ?<img
             style={{
               background:
                 i !== tabs
                   ? 'linear-gradient(153.43deg, #3351A6 16.67%, #4265C9 100%)'
                   : '#ffff',
             }}
-            src={i === tabs ? e.activeImage : e.image}
+            src={e.activeImage }
             alt=""
-          />
+          />:<img
+          style={{
+            background:
+              i !== tabs
+                ? 'linear-gradient(153.43deg, #3351A6 16.67%, #4265C9 100%)'
+                : '#ffff',
+          }}
+          src={ e.image}
+          alt=""
+        />
+          }
+         
           <h3 className="name-tab">{e.name}</h3>
         </div>
       ))}
