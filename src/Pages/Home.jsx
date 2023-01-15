@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../components/nav'
-import Swiper from '../components/swiper'
-import Tabs from '../components/tabs'
-import Products from '../components/products'
+
 import Apiservices from '../services/ApiServices'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import MyProducts from '../components/myProducts'
 import HomeForUser from '../components/HomeForUser'
+import { actions } from '../Redux'
+import LoadingHome from '../components/Skeleton/LoadingHome'
 
 function Home() {
   const [products, setProducts] = useState([])
   const [categoryId, setCategoryId] = useState('63b9a8a2b64c3cc3a87ca1b1')
   const [textSearch, setTextSearch] = useState('')
   const user = useSelector((state) => state.user)
-const[isloading,setIsLoading]=useState(false)
+  const isLoadingUser = useSelector((state) => state.isLoadingUser)
+  const dispatch = useDispatch()
+
+  const [isloading, setIsLoading] = useState(false)
+  useEffect(() => {
+    dispatch(actions.showBell(false))
+  }, [])
   useEffect(() => {
     setIsLoading(true)
     Apiservices.get(`/product?category=${categoryId}`).then((res) => {
@@ -24,17 +30,23 @@ const[isloading,setIsLoading]=useState(false)
   return (
     <div className="home">
       <Nav
-      setIsLoading={setIsLoading}
+        setIsLoading={setIsLoading}
         textSearch={textSearch}
         setTextSearch={setTextSearch}
         setProducts={setProducts}
       />
-      {user && user.role === 'merchant' ? (
+      {isLoadingUser ? 
+        <LoadingHome/>
+       : user && user.role === 'merchant' ? (
         <>
-        <MyProducts/>
+          <MyProducts />
         </>
       ) : (
-        <HomeForUser isloading={isloading} products={products} setCategoryId={setCategoryId}/>
+        <HomeForUser
+          isloading={isloading}
+          products={products}
+          setCategoryId={setCategoryId}
+        />
       )}
     </div>
   )

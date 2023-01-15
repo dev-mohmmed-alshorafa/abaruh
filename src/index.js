@@ -17,6 +17,7 @@ import Checkout from './Pages/Checkout'
 import Profile from './Pages/Profile'
 import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
+import TraderDashboard from './Pages/TraderDashboard'
 
 const router = createHashRouter([
   {
@@ -34,6 +35,7 @@ const router = createHashRouter([
       { path: '/store/:id', element: <Profile /> },
       { path: '/add-product', element: <AddProduct /> },
       { path: '/orders', element: <Orders /> },
+      { path: '/trader-dashboard/:id', element: <TraderDashboard /> },
     ],
     // errorElement: <NotFound />,
   },

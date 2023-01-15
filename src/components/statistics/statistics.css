@@ -1,0 +1,73 @@
+.statistic-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.statistic-name{
+  font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #FFFFFF;
+}
+.statistic-num{
+  font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+margin: 8px 0 16px 0;
+
+color: #FFFFFF;
+}
+.statistic-days{
+  font-weight: 200;
+font-size: 10px;
+line-height: 12px;
+
+color: #FFFFFF;
+}
+.statistic-box-num{
+  position: relative;
+}
+.sar{
+  position: absolute;
+  font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+right: 10px;
+bottom: 3px;
+
+color: #FFFFFF;
+}
+.review-img{
+  width: 51px;
+height: 51px;
+border-radius: 10px;
+}
+.review-name{
+  font-weight: 500;
+font-size: 11px;
+line-height: 13px;
+margin-top: 17px;
+
+}
+.review-description{
+  font-weight: 300;
+font-size: 11px;
+line-height: 13px;
+max-width: 90%;
+color: #B6B6B6;
+}
+.review-day{
+  font-weight: 400;
+  width: 150px;
+font-size: 11px;
+line-height: 13px;
+} 
+.last-reviews{
+  font-weight: 600;
+font-size: 16px;
+line-height: 19px;
+margin: 24px 8px;
+}

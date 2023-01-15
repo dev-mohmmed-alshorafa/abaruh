@@ -1,5 +1,6 @@
 .my-products{
   margin-top: 80px;
+  min-height: 100vh !important;
 }
 .add-product-btn{
   display: flex;
@@ -25,4 +26,7 @@ line-height: 15px;
 text-align: center;
 border: none;
 color: #FFFFFF;
+}
+.my-products .css-2kk4ci , .my-products .MuiStack-root {
+  margin-top: 0 !important;
 }

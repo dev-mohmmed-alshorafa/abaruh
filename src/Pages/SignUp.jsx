@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { actions } from '../Redux'
 import Loading from '../components/signLoading'
 function SignUp() {
-  const [isLoading,setIsLoading]=useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const i = {
     name: '',
     phoneNumber: '',
@@ -22,20 +22,19 @@ function SignUp() {
     setIsLoading(true)
     Apiservices.post('/auth/register', signup).then((res) => {
       if (res.data.token) {
-        JwtService.setToken( res.data.token)
-        dispatch(actions.protect(res.data.data))
+        JwtService.setToken(res.data.token)
+        dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
         dispatch(actions.setShowForm(0))
         setIsLoading(false)
 
         setSignup(i)
-      }else{
+      } else {
         setIsLoading(false)
-
       }
     })
   }
   return (
-    <div  className="signup">
+    <div className="signup">
       <img className="signup-logo" src="./icons/logo.png" alt="" />
       <form action="">
         <input
@@ -78,10 +77,7 @@ function SignUp() {
           SIGNUP{' '}
         </button>
       </form>
-      {
-        isLoading &&       <Loading/>
-
-      }
+      {isLoading && <Loading />}
     </div>
   )
 }

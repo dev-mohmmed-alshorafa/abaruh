@@ -17,7 +17,7 @@ function ProductsProfile({ list, setList }) {
     if (user) {
       Apiservices.get(`/product?merchant=${params.id}`).then((res) => {
         setProduct(res.data.data)
-        // setIsLoading(false)
+        setIsLoading(false)
       })
     }
   }, [user])

@@ -10,6 +10,7 @@ function Info({ user }) {
     i18n.changeLanguage(language)
     setIsOn(!isOn)
   }
+
   return (
     <div className="info">
       <section
@@ -20,7 +21,7 @@ function Info({ user }) {
           <>
             {user.role === 'merchant' && (
               <>
-                <Link to="/dashboard">
+                <Link to={`/trader-dashboard/${user._id ||user.id}`}>
                   <img src="./icons/business.png" alt="" />
                   <p>{t('info.dashboard')}</p>
                 </Link>
@@ -28,7 +29,7 @@ function Info({ user }) {
                   <img src="./icons/features.png" alt="" />
                   <p>{t('info.orders')}</p>
                 </Link>
-                <Link to="/myProducts">
+                <Link to="/">
                   <img src="./icons/products.png" alt="" />
                   <p>{t('info.products')}</p>
                 </Link>

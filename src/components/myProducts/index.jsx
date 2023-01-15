@@ -21,9 +21,7 @@ function MyProducts() {
       )
     }
   }, [user])
-  if (isLoading) {
-    return
-  }
+
   return (
     <div className="my-products">
       <section className="add-product-btn">

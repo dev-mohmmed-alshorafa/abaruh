@@ -4,7 +4,7 @@ import { actions } from '../../Redux'
 import JwtService from '../../services/TokenServices'
 import { useDispatch } from 'react-redux'
 
-function LoginForm({setIsLoading}) {
+function LoginForm({ setIsLoading }) {
   const i = {
     phoneNumber: '',
     password: '',
@@ -17,8 +17,8 @@ function LoginForm({setIsLoading}) {
     e.preventDefault()
     Apiservices.post('/auth/login', login).then((res) => {
       if (res.data.token) {
-        JwtService.setToken( res.data.token)
-        dispatch(actions.protect(res.data.data))
+        JwtService.setToken(res.data.token)
+        dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
         dispatch(actions.setShowForm(0))
         setLogin(i)
         setIsLoading(false)
