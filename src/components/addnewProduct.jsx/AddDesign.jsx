@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
 
-function AddDesign({ formKind }) {
+function AddDesign({ formKind, setIsLoading }) {
   const [color, setColor] = React.useState({})
 
   const [colors, setColors] = useState([])
@@ -53,8 +53,17 @@ function AddDesign({ formKind }) {
     newData.append('Industry', '11')
 
     Event.preventDefault()
-    setIsAdd(true)
-    Apiservices.post('/productFactory', newData)
+    setIsLoading(true)
+    Apiservices.post('/productFactory', newData).then((res) => {
+      setIsAdd(true)
+      setIsLoading(false)
+      setNewProduct({
+        name: '',
+        image: '',
+        description: '',
+        price: '',
+      })
+    })
   }
 
   const ref = useOutsideClick(handleClickOutside)

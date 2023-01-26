@@ -28,7 +28,6 @@ function Home() {
       setIsLoading(false)
     })
   }, [categoryId])
-  console.log(user)
   return (
     <div className="home">
       <Nav

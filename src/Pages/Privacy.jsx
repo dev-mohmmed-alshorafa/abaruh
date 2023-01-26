@@ -12,6 +12,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import Typography from '@mui/material/Typography'
 import { Phishing } from '@mui/icons-material'
 import UpdateUser from '../components/updateUser/UpdateUser'
+import Loading from '../components/signLoading'
 
 function Privacy() {
   const user = useSelector((e) => e.user)
@@ -28,7 +29,6 @@ function Privacy() {
       setedit(user)
     }
   }, [user])
-  console.log(user)
   if (isLoadingUser ) {
     return <h1>loading...</h1>
   }
@@ -171,6 +171,7 @@ function Privacy() {
           </Button>
         </Stack>
       </Container>
+      
     </Stack>
   )
 }

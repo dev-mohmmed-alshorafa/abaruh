@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
 import Apiservices from '../../services/ApiServices'
-function TotalCheckout({ setIsDone, paymentWay }) {
+function TotalCheckout({ setIsDone, paymentWay,setIsLoading }) {
   const total = useSelector((state) => state.total)
 
   const dispatch = useDispatch()
@@ -41,6 +41,7 @@ function TotalCheckout({ setIsDone, paymentWay }) {
       <button
         onClick={() => {
           if (paymentWay) {
+            setIsLoading(true)
             console.log({
               product: cartItems,
               total: total,
@@ -53,11 +54,15 @@ function TotalCheckout({ setIsDone, paymentWay }) {
               address: addressId,
               payment: paymentWay,
             }).then((res) => {
+              setIsLoading(false)
               setIsDone(true)
               dispatch(actions.emptyCart())
               dispatch(actions.emptyCheckOutCart())
               dispatch(actions.zeroTotal())
             })
+          }else{
+            setIsLoading(false)
+
           }
         }}
       >

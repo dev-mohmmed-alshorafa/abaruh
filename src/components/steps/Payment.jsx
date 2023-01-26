@@ -4,10 +4,11 @@ import Done from './Done'
 import TotalCheckout from './TotalCheckout'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
+import Loading from '../signLoading'
 function Payment() {
   const dispatch = useDispatch()
   const payment = useSelector((state) => state.payment)
-
+  const [isLoding, setIsLoading] = useState(false)
   const [isDone, setIsDone] = useState(false)
   return (
     <div className="payment">
@@ -43,7 +44,7 @@ function Payment() {
               value={'visa'}
               onChange={(e) => {
                 dispatch(actions.addpayment('visa'))
-                console.log();
+                console.log()
               }}
               id="visa"
             />
@@ -54,13 +55,19 @@ function Payment() {
           </div>
         </section>
 
-        <TotalCheckout paymentWay={payment} setIsDone={setIsDone} />
+        <TotalCheckout setIsLoading={setIsLoading} paymentWay={payment} setIsDone={setIsDone} />
       </div>
-      {isDone && <Done data={{
+      {isLoding && <Loading />}
+      {isDone && (
+        <Done
+          data={{
             title: 'Order Placed!',
             details:
               'your order placed successfully for more details,check all orders page under profile tab.',
-          }} setIsDone={setIsDone} />}
+          }}
+          setIsDone={setIsDone}
+        />
+      )}
     </div>
   )
 }
