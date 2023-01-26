@@ -10,8 +10,11 @@ function Protect() {
 
     if (JwtService.getToken('token')) {
       Apiservices.get('/protect').then((res) => {
-        if (!res.data.msg) {
+        
+        if (res.data && !res.data.msg) {
           dispatch(actions.protect(res.data))
+          dispatch(actions.showIsLoadingUser(false))
+
         }
         dispatch(actions.showIsLoadingUser(false))
       })

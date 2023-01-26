@@ -4,10 +4,11 @@ import OneAddress from '../components/oneAddress'
 import Apiservices from '../services/ApiServices'
 import SmallAddress from '../components/Skeleton/SmallAddress'
 import AddAddress from './AddAddress'
+import { useSelector } from 'react-redux'
 function Address() {
   const [address, setAddress] = useState([])
   const [isLoading,setIsLoading]=useState(false)
-  const [isAddress,setIsAddress]=useState(false)
+const isAddress=useSelector(e=>e.isAddress)
 
   useEffect(() => {
     setIsLoading(true)
@@ -20,11 +21,11 @@ function Address() {
     })
   }, [isAddress])
   if(isAddress){
-    return <AddAddress setIsAddress={setIsAddress}/>
+    return <AddAddress />
   }
   return (
     <div className="my-address">
-      <AddressHeader setIsAddress={setIsAddress} />
+      <AddressHeader />
       {isLoading? <SmallAddress/> : address.length !== 0 && (
         <div className="addresses">
           {address.map((e) => (

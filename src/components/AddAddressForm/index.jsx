@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import Apiservices from '../../services/ApiServices'
 import { Link } from 'react-router-dom'
 import Loading from '../signLoading'
-function Form({ setIsAddress }) {
+import { useDispatch } from 'react-redux'
+import { actions } from '../../Redux'
+function Form() {
+  const dispatch = useDispatch()
+
   const [isLoading, setIsLoading] = useState(false)
   const [addressForm, setAddressForm] = useState({
     addressName: '',
@@ -14,17 +18,16 @@ function Form({ setIsAddress }) {
     e.preventDefault()
     if (addressForm.addressName && addressForm.address && addressForm.city) {
       Apiservices.post('/address', addressForm).then(() => {
-        setIsAddress(false)
-        setIsLoading(true)
+        dispatch(actions.setIsAddress(false))
+        setIsLoading(false)
         setAddressForm({
           addressName: '',
           address: '',
           city: '',
         })
       })
-    }else{
+    } else {
       setIsLoading(false)
-
     }
   }
   return (

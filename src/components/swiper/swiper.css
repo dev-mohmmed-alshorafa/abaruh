@@ -36,6 +36,7 @@ overflow-y: hidden;
 }
 
 
+
 @media (min-width: 767px) {
   .swiper {
     height: 70vh;

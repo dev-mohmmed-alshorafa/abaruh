@@ -1,11 +1,12 @@
 import React from 'react'
 import AddAddressHeader from '../components/AddAddressHeader'
 import AddAddressForm from '../components/AddAddressForm'
-function AddAddress({setIsAddress}) {
+function AddAddress() {
+
   return (
     <div className='my-address'>
-        <AddAddressHeader setIsAddress={setIsAddress}/>
-        <AddAddressForm setIsAddress={setIsAddress}/>
+        <AddAddressHeader />
+        <AddAddressForm />
     </div>
   )
 }

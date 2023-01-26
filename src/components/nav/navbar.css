@@ -15,6 +15,7 @@
 .navbar button {
   background-color: rgba(255, 0, 0, 0);
   border: none;
+  /* margin: 0 auto !important; */
 }
 
 .navbar button img {
@@ -109,12 +110,9 @@
 }
 
 .user-info h2 {
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 700;
-  padding: 28px 24px;
-  border-radius: 50%;
   color: var(--secondary-color);
-  background-color: var(--main-color);
 }
 
 .user-info p {
@@ -335,7 +333,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 50px;
+  padding-top: 9px;
 }
 .signs-btns a{
   text-decoration: none;
@@ -345,11 +343,20 @@
 @media (min-width: 700px) {
   .menu-active {
     width: 25%;
+    overflow-y: scroll;
   }
-
+  .menu-active::-webkit-scrollbar {
+    background-color: rgba(255, 255, 255, 0);
+  }
+   
+  .menu-active::-webkit-scrollbar-track {
+  }
+   
+  .menu-active::-webkit-scrollbar-thumb {
+    background-color: rgba(169, 169, 169, 0);
+  }
   .logout {
     width: 70% !important;
-    margin: auto;
   }
 
   .navbar {

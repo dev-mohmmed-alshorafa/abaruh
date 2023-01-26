@@ -18,6 +18,11 @@ import Profile from './Pages/Profile'
 import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
 import TraderDashboard from './Pages/TraderDashboard'
+import Privacy from './Pages/Privacy'
+import Factory from './Pages/Factory'
+import ProductFactory from './Pages/ProductFactory'
+import OrdersFactory from './Pages/OrdersFactory'
+import OrderFactory from './Pages/OrderFactory'
 
 const router = createHashRouter([
   {
@@ -36,6 +41,10 @@ const router = createHashRouter([
       { path: '/add-product', element: <AddProduct /> },
       { path: '/orders', element: <Orders /> },
       { path: '/trader-dashboard/:id', element: <TraderDashboard /> },
+      { path: '/privacy/:id', element: <Privacy /> },
+      { path: '/factory/product/:id', element: <ProductFactory /> },
+      { path: '/factory/orders', element: <OrdersFactory /> },
+      { path: '/factory/orders/:id', element: <OrderFactory /> },
     ],
     // errorElement: <NotFound />,
   },

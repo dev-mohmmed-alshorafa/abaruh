@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './address.css'
-function index({ setIsAddress }) {
+import { actions } from '../../Redux'
+import { useDispatch } from 'react-redux'
+function Index() {
+  const dispatch = useDispatch()
   return (
     <div className="address-header">
       <Link className="backToHome" to={'/'}>
@@ -9,7 +12,8 @@ function index({ setIsAddress }) {
       </Link>
       <p>My Address</p>
       <div
-        onClick={() => setIsAddress(true)}
+        onClick={() =>   dispatch(actions.setIsAddress (true))
+        }
         to={'/addAddress'}
         className="add-address-btn"
       >
@@ -19,4 +23,4 @@ function index({ setIsAddress }) {
   )
 }
 
-export default index
+export default Index

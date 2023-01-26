@@ -7,7 +7,6 @@ import { actions } from '../../Redux'
 function Address({ setisActive }) {
   const [addresses, setAddresses] = useState([])
   const dispatch = useDispatch()
-
   useEffect(() => {
     Apiservices.get('/address').then((res) => setAddresses(res.data.data))
   }, [])
@@ -32,7 +31,8 @@ function Address({ setisActive }) {
             </div>
           ))}
 
-          <Link to={'/addAddress'}>Add New Address</Link>
+          <Link onClick={()=>{  dispatch(actions.setIsAddress(true))
+}} to={'/addresses'}>Add New Address</Link>
         </div>
       </section>
       {cart.length === 0 ? (

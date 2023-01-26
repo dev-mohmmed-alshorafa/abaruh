@@ -7,7 +7,8 @@ import './navbar.css'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import { Stack } from '@mui/system'
+import NotificationFactory from './NotificationFactory'
 function Nav({ textSearch, setTextSearch, setProducts, setIsLoading }) {
   const user = useSelector((state) => state.user)
   const bell = useSelector((state) => state.bell)
@@ -33,6 +34,8 @@ function Nav({ textSearch, setTextSearch, setProducts, setIsLoading }) {
               alt=""
             />
           </Link>
+        ) : user && user.role === 'factory' ? (
+        <NotificationFactory/>
         ) : (
           <section className="search-cart">
             <Search

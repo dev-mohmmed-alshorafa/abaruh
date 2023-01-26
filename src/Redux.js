@@ -9,9 +9,10 @@ const countSlice = createSlice({
     total: 0,
     address: '',
     payment: '',
-    showForm:0,
-    bell:false,
-    isLoadingUser:false
+    showForm: 0,
+    bell: false,
+    isLoadingUser: false,
+    isAddress: false,
   },
   reducers: {
     protect(state, action) {
@@ -55,19 +56,21 @@ const countSlice = createSlice({
     addpayment(state, action) {
       state.payment = action.payload
     },
-    logout(state, action){
+    logout(state, action) {
       state.user = null
     },
-    setShowForm(state, action){
+    setShowForm(state, action) {
       state.showForm = action.payload
-    }
-    ,
-    showBell(state,action){
+    },
+    showBell(state, action) {
       state.bell = action.payload
-    } ,
-    showIsLoadingUser(state,action){
+    },
+    showIsLoadingUser(state, action) {
       state.isLoadingUser = action.payload
-    }
+    },
+    setIsAddress(state, action) {
+      state.isAddress = action.payload
+    },
   },
 })
 export const actions = countSlice.actions

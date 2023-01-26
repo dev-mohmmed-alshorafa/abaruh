@@ -1,10 +1,7 @@
 import React from 'react'
-import Navbar from './components/nav'
-import SayHi from './components/SayHi'
 import { Outlet } from 'react-router-dom'
 import './App.css'
 import { useSelector } from 'react-redux'
-
 import Protect from './components/protect/Protect'
 import SignUp from './Pages/SignUp'
 import Login from './Pages/Login'
@@ -16,7 +13,13 @@ function App() {
 
   const showForm = useSelector((state) => state.showForm)
   return (
-    <div style={{height:showForm !== 0?'100vh':'auto',overflow:showForm !== 0?'hidden':'auto'}} className='app'>
+    <div
+      style={{
+        height: showForm !== 0 ? '100vh' : 'auto',
+        overflow: showForm !== 0 ? 'hidden' : 'auto',
+      }}
+      className="app"
+    >
       <Protect />
       <Outlet />
       {showForm !== 0 && (

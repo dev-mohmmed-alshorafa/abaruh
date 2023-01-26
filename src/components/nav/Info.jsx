@@ -21,7 +21,7 @@ function Info({ user }) {
           <>
             {user.role === 'merchant' && (
               <>
-                <Link to={`/trader-dashboard/${user._id ||user.id}`}>
+                <Link to={`/trader-dashboard/${user._id || user.id}`}>
                   <img src="./icons/business.png" alt="" />
                   <p>{t('info.dashboard')}</p>
                 </Link>
@@ -35,19 +35,34 @@ function Info({ user }) {
                 </Link>
               </>
             )}
-
-            <Link to="/myOrders">
-              <img src="./icons/order.png" alt="" />
-              <p>{t('info.myorder')}</p>
-            </Link>
-            <Link to="/addresses">
-              <img src="./icons/adress.png" alt="" />
-              <p>{t('info.addresses')}</p>
-            </Link>
-            <Link to="/privacy">
-              <img src="./icons/policy.png" alt="" />
-              <p>{t('info.privacy')}</p>
-            </Link>
+            {(user.role === 'user' || user.role === 'admin') && (
+              <>
+                <Link to="/myOrders">
+                  <img src="./icons/order.png" alt="" />
+                  <p>{t('info.myorder')}</p>
+                </Link>
+                <Link to="/addresses">
+                  <img src="./icons/adress.png" alt="" />
+                  <p>{t('info.addresses')}</p>
+                </Link>
+                <Link to={`/privacy/${user._id}`}>
+                  <img src="./icons/policy.png" alt="" />
+                  <p>{t('info.privacy')}</p>
+                </Link>
+              </>
+            )}
+            {
+              user.role === 'factory' && <>
+                <Link to="/factory/orders">
+                  <img src="./icons/order.png" alt="" />
+                  <p>{t('info.myorder')}</p>
+                </Link>
+                <Link to={`/privacy/${user._id}`}>
+                  <img src="./icons/policy.png" alt="" />
+                  <p>{t('info.privacy')}</p>
+                </Link>
+              </>
+            }
           </>
         )}
         <div

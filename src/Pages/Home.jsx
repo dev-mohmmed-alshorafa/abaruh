@@ -7,6 +7,7 @@ import MyProducts from '../components/myProducts'
 import HomeForUser from '../components/HomeForUser'
 import { actions } from '../Redux'
 import LoadingHome from '../components/Skeleton/LoadingHome'
+import Factory from './Factory'
 
 function Home() {
   const [products, setProducts] = useState([])
@@ -27,6 +28,7 @@ function Home() {
       setIsLoading(false)
     })
   }, [categoryId])
+  console.log(user)
   return (
     <div className="home">
       <Nav
@@ -35,13 +37,13 @@ function Home() {
         setTextSearch={setTextSearch}
         setProducts={setProducts}
       />
-      {isLoadingUser ? 
-        <LoadingHome/>
-       : user && user.role === 'merchant' ? (
+      {isLoadingUser ? (
+        <LoadingHome />
+      ) : user && user.role === 'merchant' ? (
         <>
           <MyProducts />
         </>
-      ) : (
+      ) :user && user.role === 'factory' ?<Factory/>: (
         <HomeForUser
           isloading={isloading}
           products={products}

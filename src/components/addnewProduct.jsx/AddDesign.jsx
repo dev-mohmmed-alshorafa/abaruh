@@ -9,12 +9,9 @@ import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
 
-function AddProductForm({ formKind }) {
+function AddDesign({ formKind }) {
   const [color, setColor] = React.useState({})
 
-  const [category, setCategory] = useState({ name: 'Category', _id: 0 })
-  const [getCategory, setGetCategory] = useState([])
-  const [size, setSize] = useState({ name: 'Size', _id: 0 })
   const [colors, setColors] = useState([])
   const handelAddColor = () => {
     if (colors.some((e) => e.hex === color.hex || e.rgba === color.rgba)) {
@@ -23,6 +20,9 @@ function AddProductForm({ formKind }) {
       setColors([color, ...colors])
     }
   }
+  const [category, setCategory] = useState({ name: 'Category', _id: 0 })
+  const [getCategory, setGetCategory] = useState([])
+  const [size, setSize] = useState({ name: 'Size', _id: 0 })
   const [isAdd, setIsAdd] = useState(false)
   useEffect(() => {
     Apiservices.get('/category').then((res) => {
@@ -39,14 +39,14 @@ function AddProductForm({ formKind }) {
     description: '',
     price: '',
   })
-
   const addSuccsess = (Event) => {
     const newData = new FormData()
     newData.append('image', img)
-    // newData.append('color', colors)
+    // newData.append('data', JSON.stringify(newProduct))
     newData.append('name', newProduct.name)
     newData.append('category', category._id)
     newData.append('Sizes', size.name)
+    newData.append('color', 'red')
     newData.append('Quantity', 11)
     newData.append('price', newProduct.price)
     newData.append('description', newProduct.description)
@@ -54,7 +54,7 @@ function AddProductForm({ formKind }) {
 
     Event.preventDefault()
     setIsAdd(true)
-    Apiservices.post('/product', newData)
+    Apiservices.post('/productFactory', newData)
   }
 
   const ref = useOutsideClick(handleClickOutside)
@@ -150,7 +150,6 @@ function AddProductForm({ formKind }) {
           <img src="./icons/addimage.png" alt="" />
         </label>
       </section>
-
       <div className={isAdd ? 'active-succsess' : 'succsess'}>
         <button
           style={{ display: isAdd ? 'none' : 'block' }}
@@ -166,4 +165,4 @@ function AddProductForm({ formKind }) {
   )
 }
 
-export default AddProductForm
+export default AddDesign
