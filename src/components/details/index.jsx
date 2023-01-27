@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom'
 import Apiservices from '../../services/ApiServices'
 import ConfirmMassage from '../products/ConfirmMassage'
 import BigProduct from '../Skeleton/BigProduct'
+import { useTranslation } from 'react-i18next'
 
 function DetailsProduct() {
   const [isActive, setIsActive] = useState(0)
@@ -55,6 +56,7 @@ function DetailsProduct() {
     }
   }
   const ref = useOutsideClick(handleClickOutside)
+  const { t } = useTranslation()
 
   return (
     <div>
@@ -84,7 +86,7 @@ function DetailsProduct() {
                 }
                 onClick={() => setIsActive(0)}
               >
-                Product
+                {t('product')}
               </button>
               <button
                 className={
@@ -92,7 +94,7 @@ function DetailsProduct() {
                 }
                 onClick={() => setIsActive(1)}
               >
-                Details
+                {t('details')}
               </button>
               <button
                 className={
@@ -100,7 +102,7 @@ function DetailsProduct() {
                 }
                 onClick={() => setIsActive(2)}
               >
-                Reviews
+                {t('reviews')}
               </button>
             </div>
             {isActive === 0 ? (
@@ -132,7 +134,7 @@ function DetailsProduct() {
                       onClick={addSuccsess}
                       className="add-to-cart-product"
                     >
-                      Add to cart
+                     {t("cart")}
                     </button>
                     <div>
                       {isActiveMassage && (

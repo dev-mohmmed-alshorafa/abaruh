@@ -1,7 +1,9 @@
 import React from 'react'
 import './emptyBox.css'
 import { Link } from 'react-router-dom'
-function index() {
+import { useTranslation } from 'react-i18next'
+function Index() {
+  const { t } = useTranslation()
   return (
     <div className='empty-box-section'>
         <Link className='backToHome' to={'/'}>
@@ -9,7 +11,7 @@ function index() {
       </Link>
       <div className='empty-box'>
       <img src="./icons/box.png" alt="" />
-      <p>your cart is empty !</p>
+      <p>{t("emptycart")}</p>
     </div>
     <div></div>
     </div>
@@ -17,4 +19,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

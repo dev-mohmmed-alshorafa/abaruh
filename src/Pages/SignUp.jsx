@@ -6,6 +6,7 @@ import JwtService from '../services/TokenServices'
 import { useDispatch } from 'react-redux'
 import { actions } from '../Redux'
 import Loading from '../components/signLoading'
+import { useTranslation } from 'react-i18next'
 function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
   const i = {
@@ -15,6 +16,7 @@ function SignUp() {
     email: '',
   }
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   const [signup, setSignup] = useState(i)
   const handelSignUp = (e) => {
@@ -38,7 +40,7 @@ function SignUp() {
       <img className="signup-logo" src="./icons/logo.png" alt="" />
       <form action="">
         <input
-          placeholder="Name"
+          placeholder={t("name")}
           value={signup.name}
           onChange={(e) => setSignup({ ...signup, name: e.target.value })}
           type="text"
@@ -50,31 +52,34 @@ function SignUp() {
             onChange={(e) =>
               setSignup({ ...signup, phoneNumber: e.target.value })
             }
-            placeholder="Phone Number"
+            placeholder={t("pnum")}
             type="text"
           />
         </div>
         <input
           value={signup.email}
           onChange={(e) => setSignup({ ...signup, email: e.target.value })}
-          placeholder="Email (optional)"
+          placeholder={t("emailoptional")}
           type="text"
         />
         <input
           value={signup.password}
           onChange={(e) => setSignup({ ...signup, password: e.target.value })}
-          placeholder="Password"
+          placeholder={t("password")}
           type="password"
         />
-        <input placeholder="Confirm Password" type="password" />
+        <input           placeholder={t("confirmpassword")}
+ type="password" />
         <div className="tearams">
           <input placeholder="Name" required type="checkbox" name="" id="" />
           <p>
-            I have read and understan <span>Teams and Conditions</span>{' '}
+          {t("read")}
+ <span>          {t("team")}
+</span>
           </p>
         </div>
         <button onClick={handelSignUp} className="signup-btn">
-          SIGNUP{' '}
+          {t("signup")}
         </button>
       </form>
       {isLoading && <Loading />}

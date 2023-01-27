@@ -3,6 +3,7 @@ import Apiservices from '../../services/ApiServices'
 import { actions } from '../../Redux'
 import JwtService from '../../services/TokenServices'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 function LoginForm({ setIsLoading }) {
   const i = {
@@ -25,11 +26,12 @@ function LoginForm({ setIsLoading }) {
       }
     })
   }
+  const { t } = useTranslation()
   return (
     <>
       <form action="">
         <input
-          placeholder="Phone Number"
+          placeholder={t("pnum")}
           value={login.phoneNumber}
           onChange={(e) => setLogin({ ...login, phoneNumber: e.target.value })}
           type="text"
@@ -37,11 +39,11 @@ function LoginForm({ setIsLoading }) {
         <input
           value={login.password}
           onChange={(e) => setLogin({ ...login, password: e.target.value })}
-          placeholder="Password"
+          placeholder={t("password")}
           type="password"
         />
-        <span>Forget Password ?</span>
-        <button onClick={handelLogin}>LOGIN</button>
+        <span>{("forgetpassword")}</span>
+        <button onClick={handelLogin}>{t('signin')}</button>
       </form>
     </>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
+import { useTranslation } from 'react-i18next'
 
 function ConfirmMassage({ setIsActiveMassage, product }) {
   const dispatch = useDispatch()
@@ -15,13 +16,14 @@ function ConfirmMassage({ setIsActiveMassage, product }) {
   const handelCancel = () => {
     setIsActiveMassage(false)
   }
+  const { t } = useTranslation()
   return (
     <div className="confirm-massage">
-      <h3>Start a new cart?</h3>
-      <p>When starting a new request, All items in the cart will be deleted</p>
+      <h3>{t("newcart")}</h3>
+      <p>{t("msgnewcart")}</p>
       <div>
-        <button onClick={handelConfirm}>Confirm</button>
-        <button onClick={handelCancel}>Cancel</button>
+        <button onClick={handelConfirm}>{t("confirm")}</button>
+        <button onClick={handelCancel}>{t("cancel")}</button>
       </div>
     </div>
   )

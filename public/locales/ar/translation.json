@@ -10,11 +10,36 @@
 
 
   },
-  "cart":"اضافه للعربه"
-  ,
-
-  "description": {
-    "part1": "Um loszulegen, ändere <1>src/App(DE).js</1> speicheren und neuladen.",
-    "part2": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter."
-  }
+  "cart":"اضافه للعربه",
+  "signup":"تسجيل",
+  "signin":"تسجيل الدخول",
+  "signupnow":"سجل الأن !",
+  "search":"بحث",
+  "newproudacts":"منتجات جديده",
+  "noproducts":"لا يوجد منتجات متاحه"
+,"name":"الإسم",
+"pnum":"رقم الهاتف",
+"emailoptional":"البريد (إختياري)",
+"optional":"optional",
+"password":"كلمة السر",
+"confirmpassword":" تأكيد كلمة السر",
+"read":"لقد قرأت و فهمت ",
+"team":"الفرق والشروط",
+"forgetpassword":"نسيت كلمة السر ؟",
+"continegoogle":"الاستمرار مع جوجل"
+,"continefacebook":"الاستمرار مع الفيسبوك",
+"haveaccount":"لا تمتلك حساب ؟!",
+"emptycart":"عربتك فارغه !",
+"total":"المجموع :",
+"checkout":"الدفع",
+"newcart":"بدء عربه جديده ؟!",
+"msgnewcart":"عند بدء طلب جديد ، سيتم حذف جميع العناصر الموجودة في سلة التسوق هذه",
+"confirm":"تأكيد",
+"cancel":"إلغاء",
+"product":"منتج",
+"selectcolor":"اختيار اللون :",
+"selectsize":"اختيار الحجم :",
+"details":"التفاصيل",
+"reviews":"المراجعات",
+"addedsuccessfuly":"اضيف بنجاح"
 }

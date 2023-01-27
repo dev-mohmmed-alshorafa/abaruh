@@ -9,8 +9,35 @@
 
   },
   "cart": "Add to cart",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
-  }
+  "signup":"Sign Up",
+  "signin":"Login",
+  "signupnow":"Sign Up Now !",
+  "search":"Search",
+  "newproudacts":"New Proudacts",
+  "noproducts":"No products are currently available"
+,"name":"Name",
+"pnum":"Phone Number",
+"emailoptional":"Email (optional)",
+"optional":"optional",
+"password":"Password",
+"confirmpassword":"Confirm Password",
+"read":"I have read and understan ",
+"team":"Teams and Conditions",
+"forgetpassword":"Forget Password ?",
+"continegoogle":"Continue With Google"
+,"continefacebook":"Continue With Facebook",
+"haveaccount":"Don't have account ?",
+"emptycart":"Your Cart Is Empty !",
+"total":"Total :",
+"checkout":"checkout",
+"newcart":"Start a New Cart ?",
+"msgnewcart":"When starting a new request, All Items in this cart will be deleted",
+"confirm":"Confirm",
+"cancel":"cancel",
+"product":"Product",
+"selectcolor":"Select Color :",
+"selectsize":"Select Size :",
+"details":"Details",
+"reviews":"Reviews",
+"addedsuccessfuly":"Added Successfuly"
 }

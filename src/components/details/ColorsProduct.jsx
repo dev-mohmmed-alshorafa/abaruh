@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function ColorsProduct() {
   const details={
@@ -6,10 +7,11 @@ function ColorsProduct() {
     size:['XL','L','XXL']
   }
   const [isChoose,setIsChoose]=useState(details.colors[0])
+  const { t } = useTranslation()
 
   return (
     <div className='colors'>
-      <p className='select-text'>Select Color:</p>
+      <p className='select-text'>{t("selectcolor")}</p>
       <div>
         <div className='choose-color'>
         {
@@ -23,7 +25,7 @@ function ColorsProduct() {
         </div>
     
       </div>
-      <p className='size-text'>Select Size:</p>
+      <p className='size-text'>{t("selectsize")}</p>
       <select name="" id="">
         {
          details.size.map((e,i)=> <option key={i} value={e}>{e}</option> ) 
