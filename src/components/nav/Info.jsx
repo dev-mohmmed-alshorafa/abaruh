@@ -1,10 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { actions } from '../../Redux'
 
 function Info({ user }) {
   const { t, i18n } = useTranslation()
+  const dispatch = useDispatch()
+
   const [isOn, setIsOn] = useState(false)
   const changeLanguage = (language) => {
     i18n.changeLanguage(language)
@@ -29,9 +33,21 @@ function Info({ user }) {
                   <img src="./icons/features.png" alt="" />
                   <p>{t('info.orders')}</p>
                 </Link>
-                <Link to="/">
+                <Link to="/myOrders">
+                  <img src="./icons/order.png" alt="" />
+                  <p>{t('info.myorder')}</p>
+                </Link>
+                {/* <Link to="/">
                   <img src="./icons/products.png" alt="" />
                   <p>{t('info.products')}</p>
+                </Link> */}
+                <Link to="/addresses">
+                  <img src="./icons/adress.png" alt="" />
+                  <p>{t('info.addresses')}</p>
+                </Link>
+                <Link to={`/privacy/${user._id}`}>
+                  <img src="./icons/policy.png" alt="" />
+                  <p>{t('info.privacy')}</p>
                 </Link>
               </>
             )}
@@ -51,8 +67,8 @@ function Info({ user }) {
                 </Link>
               </>
             )}
-            {
-              user.role === 'factory' && <>
+            {user.role === 'factory' && (
+              <>
                 <Link to="/factory/orders">
                   <img src="./icons/order.png" alt="" />
                   <p>{t('info.myorder')}</p>
@@ -62,7 +78,7 @@ function Info({ user }) {
                   <p>{t('info.privacy')}</p>
                 </Link>
               </>
-            }
+            )}
           </>
         )}
         <div
@@ -71,8 +87,20 @@ function Info({ user }) {
         >
           <p>English</p>
           <div className="lng-btns">
-            <button onClick={() => changeLanguage('en')}></button>
-            <button onClick={() => changeLanguage('ar')}></button>
+            <button
+              onClick={() => {
+                dispatch(actions.setLng('en'))
+
+                changeLanguage('en')
+              }}
+            ></button>
+            <button
+              onClick={() => {
+                dispatch(actions.setLng('ar'))
+
+                changeLanguage('ar')
+              }}
+            ></button>
             <span
               style={{ left: isOn === false ? 0 : '20px' }}
               className="span-lng"

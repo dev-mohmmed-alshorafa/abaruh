@@ -4,11 +4,11 @@ import './order.css'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-function MyOrder({ order }) {
+function Order({ order }) {
   const { t } = useTranslation()
 const lng=useSelector(e=>e.lng)
   return (
-    <Link to={`/myOrders/${order._id}`} className="order">
+    <Link  className="order">
       <Avatar />
       <div
         style={{
@@ -33,4 +33,4 @@ const lng=useSelector(e=>e.lng)
   )
 }
 
-export default MyOrder
+export default Order

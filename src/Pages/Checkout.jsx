@@ -3,13 +3,16 @@ import PersonalInfo from '../components/steps/PersonalInfo'
 import ShoppingInfo from '../components/steps/ShoppingInfo'
 import Payment from '../components/steps/Payment'
 import Address from '../components/steps/Address'
+import { useTranslation } from 'react-i18next'
 
 function Checkout() {
   const [isActive, setisActive] = useState(0)
+  const { t } = useTranslation()
+
   const steps = [
     {
       num: 1,
-      name: 'Personal Info',
+      name: t('Personalinfo'),
     },
     // {
     //   num: 2,
@@ -17,7 +20,7 @@ function Checkout() {
     // },
     {
       num: 2,
-      name: 'Payment',
+      name: t('payment'),
     },
   ]
   return (

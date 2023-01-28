@@ -6,6 +6,8 @@ import './myProducts.css'
 import { Link } from 'react-router-dom'
 import SmallProducts from '../Skeleton/SmallProducts'
 import { Box } from '@mui/system'
+import { useTranslation } from 'react-i18next'
+
 function MyProducts() {
   const [products, setProduct] = useState([])
   const user = useSelector((state) => state.user)
@@ -21,12 +23,13 @@ function MyProducts() {
       )
     }
   }, [user])
+  const { t } = useTranslation()
 
   return (
     <div className="my-products">
       <section className="add-product-btn">
-        <p>My Product</p>
-        <Link to="/add-product">Add Product</Link>
+        <p>{t("myproduct")}</p>
+        <Link to="/add-product">{t("addproduct")}</Link>
       </section>
       {isLoading ? (
         <Box mt={20}>

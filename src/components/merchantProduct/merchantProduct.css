@@ -21,6 +21,7 @@ right: 0;
   width: 80%;
   margin-top: 9%;
   flex-direction: column;
+  max-width: 400px;
 }
 .edit-form-countier form input,.edit-form-countier form textarea{
 padding: 15px;

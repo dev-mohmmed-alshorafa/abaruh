@@ -1,18 +1,19 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-function CreatePDBtns({setIsAddProduct}) {
+function CreatePDBtns({ setIsAddProduct }) {
+  const { t } = useTranslation()
+
   return (
-    <div className='create-product-btns'>
-      <button onClick={()=>setIsAddProduct(2)}>
+    <div className="create-product-btns">
+      <button onClick={() => setIsAddProduct(2)}>
         <img src="./icons/web.png" alt="" />
-        <span>Create Design</span>
+        <span>{t('createdesign')}</span>
       </button>
-      <button onClick={()=>setIsAddProduct(1)}>
+      <button onClick={() => setIsAddProduct(1)}>
         <img src="./icons/openbox.png" alt="" />
-        <span>Add Product</span>
-
+        <span> {t('addproduct')}</span>
       </button>
-      
     </div>
   )
 }

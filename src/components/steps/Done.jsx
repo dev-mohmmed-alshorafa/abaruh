@@ -1,7 +1,10 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 function Done({setIsDone,data}) {
+  const { t } = useTranslation()
+
   return (
     <div className='checkout-done'>
         <div className='done-div'>
@@ -10,7 +13,7 @@ function Done({setIsDone,data}) {
           <span>{data.details}</span>
           <Link onClick={()=>setIsDone(false)} to={'/'}>
             <div></div>
-            <p>Home</p>
+            <p>{t("home")}</p>
             <img className='to-home' src="./icons/right.png" alt="" />
           </Link>
         </div>

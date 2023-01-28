@@ -63,7 +63,6 @@
   height: 100vh;
   background-color: rgb(255, 253, 253);
   top: 0;
-  left: 0;
   transition: 0.15s linear;
   display: flex;
   flex-direction: column;
@@ -397,5 +396,6 @@
   .search-from {
     width: 50%;
     margin: auto;
+    border:1px solid gray
   }
 }

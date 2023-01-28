@@ -5,19 +5,22 @@ import TotalCheckout from './TotalCheckout'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
 import Loading from '../signLoading'
+import { useTranslation } from 'react-i18next'
 function Payment() {
   const dispatch = useDispatch()
   const payment = useSelector((state) => state.payment)
   const [isLoding, setIsLoading] = useState(false)
   const [isDone, setIsDone] = useState(false)
+  const { t } = useTranslation()
+
   return (
     <div className="payment">
       <input
         className="checkout-input"
-        placeholder="Discount Code"
+        placeholder={t('discount')}
         type="text"
       />
-      <p className="payment-text">Payment Method</p>
+      <p className="payment-text"> {t('paymentmethod')}</p>
       <div className="payment-section">
         <section
           onSubmit={(e) => {
@@ -55,15 +58,19 @@ function Payment() {
           </div>
         </section>
 
-        <TotalCheckout setIsLoading={setIsLoading} paymentWay={payment} setIsDone={setIsDone} />
+        <TotalCheckout
+          setIsLoading={setIsLoading}
+          paymentWay={payment}
+          setIsDone={setIsDone}
+        />
       </div>
       {isLoding && <Loading />}
       {isDone && (
         <Done
           data={{
-            title: 'Order Placed!',
+            title: t('orderplaced'),
             details:
-              'your order placed successfully for more details,check all orders page under profile tab.',
+            t('ordermsg'),
           }}
           setIsDone={setIsDone}
         />

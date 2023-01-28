@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom'
 import useOutsideClick from '../../hook/UseOutsideClick'
 import './merchantProduct.css'
 import Apiservices from '../../services/ApiServices'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import Loading from '../signLoading'
 function MerchantProduct({ product }) {
   const [isShow, setIsShow] = useState(false)
   const [updateImg, setUpdateImg] = useState('')
   const [myProduct, setMyProduct] = useState(product)
   const [isUpdate, setIsUpdate] = useState(product)
+  const [isLoading,setIsLoading]=useState(false)
+  const { t } = useTranslation()
+
   const handelUpdate = (e) => {
     e.preventDefault()
     const newData = new FormData()
@@ -15,9 +21,11 @@ function MerchantProduct({ product }) {
     newData.append('name', isUpdate.name)
     newData.append('price', isUpdate.price)
     newData.append('image', updateImg)
-
+    setIsLoading(true)
     Apiservices.put(`/product/${myProduct._id}`, newData).then((res) => {
       setMyProduct(res.data.data)
+      setIsLoading(false)
+
       setIsShow(false)
     })
   }
@@ -28,7 +36,7 @@ function MerchantProduct({ product }) {
     setIsShow(true)
   }
   const ref = useOutsideClick(handleClickOutside)
-
+const lng=useSelector(e=>e.lng)
   return (
     <div className="product">
       <Link>
@@ -42,6 +50,7 @@ function MerchantProduct({ product }) {
           <img
             onClick={openEditForm}
             id="edit-product"
+            style={{right:lng==="en"?" -124px":"auto",left:lng!=="en"?" -124px":"auto"}}
             src="./icons/pencl.png"
             alt=""
           />
@@ -52,7 +61,7 @@ function MerchantProduct({ product }) {
                 onChange={(e) =>
                   setIsUpdate({ ...isUpdate, name: e.target.value })
                 }
-                placeholder="Name Product"
+                placeholder={t("nameproduct")}
                 type="text"
               />
               <input
@@ -60,7 +69,7 @@ function MerchantProduct({ product }) {
                 onChange={(e) =>
                   setIsUpdate({ ...isUpdate, price: e.target.value })
                 }
-                placeholder="Price"
+                placeholder={t("price")}
                 type="number"
               />
               <textarea
@@ -68,7 +77,7 @@ function MerchantProduct({ product }) {
                 onChange={(e) =>
                   setIsUpdate({ ...isUpdate, description: e.target.value })
                 }
-                placeholder="Description "
+                placeholder={t("description ")}
                 name=""
                 id=""
                 cols="30"
@@ -77,7 +86,7 @@ function MerchantProduct({ product }) {
 
               <label className="updateImg" htmlFor="updateImg">
                 <p></p>
-                <p> Update Image</p>
+                <p> {t("updateimg")}</p>
                 <img src="./icons/addimage.png" alt="" />
               </label>
               <input
@@ -87,7 +96,8 @@ function MerchantProduct({ product }) {
                 onChange={(e) => setUpdateImg(e.target.files[0])}
                 id="updateImg"
               />
-              <button>Update</button>
+              <button>{t("update")}</button>
+              {isLoading &&<Loading/>}
             </form>
           )}
         </div>

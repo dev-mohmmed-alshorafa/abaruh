@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Done from '../steps/Done'
 import './orderState.css'
+import { useTranslation } from 'react-i18next'
 function OrderState({ isMove, setIsMove }) {
   const [isDone, setIsDone] = useState(false)
   const factoryData = {
@@ -18,6 +19,8 @@ function OrderState({ isMove, setIsMove }) {
     dateTo: '10/01/2022',
     details: 'lab lab lab lab lab lab lab lab lab',
   }
+  const { t } = useTranslation()
+
   return (
     <div className="factory-order">
       <section className="logo-Factory">
@@ -29,47 +32,46 @@ function OrderState({ isMove, setIsMove }) {
             <p>{factoryData.type}</p>
           </div>
         </div>
-        <Link>Factory Page</Link>
+        <Link>{t("factorypage")}</Link>
       </section>
       <section className="approved-design">
-        <h3>Approved-Design</h3>
+        <h3>{t("approveddesign")}</h3>
         <div>
-          <p>Name: {factoryData.fileName}</p>
-          <p>category: {factoryData.category}</p>
-          <p>Made Of: {factoryData.madeOf}</p>
+          <p>{t("name")}: {factoryData.fileName}</p>
+          <p>{t("category")}: {factoryData.category}</p>
+          <p>{t("madeof")}: {factoryData.madeOf}</p>
         </div>
       </section>
       <section className="approved-design">
-        <h3>Approved-Design</h3>
+      <h3>{t("approveddesign")}</h3>
         <div>
           <p>
-            Price: <span> {factoryData.price} SAR PER unit</span>{' '}
+            {t("price")}: <span> {factoryData.price} SAR PER unit</span>{' '}
           </p>
           <p>
-            Date:{' '}
+            {t("date")}:{' '}
             <span>
               from {factoryData.dateFrom} to {factoryData.dateTo}
             </span>
           </p>
           <p>
-            Details: <span>{factoryData.details}</span>
+            {t("details")}: <span>{factoryData.details}</span>
           </p>
         </div>
       </section>
       <section className="accept-reject-btns">
         <button onClick={() => setIsDone(true)} className="accept-btn">
-          Accept
+          {t("accept")}
         </button>
         <button onClick={() => setIsMove(false)} className="reject-btn">
-          Reject
+          {t("reject")}
         </button>
       </section>
       {isDone && (
         <Done
           data={{
-            title: 'Order Placed!',
-            details:
-              'your order has placed successfully for more details,check all My orders page under profile tab.',
+            title: t('orderplaced'),
+            details: t('ordermsgt')
           }}
         />
       )}

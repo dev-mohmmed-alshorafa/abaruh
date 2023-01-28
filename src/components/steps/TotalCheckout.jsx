@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
 import Apiservices from '../../services/ApiServices'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 function TotalCheckout({ setIsDone, paymentWay,setIsLoading }) {
   const total = useSelector((state) => state.total)
 
@@ -31,6 +33,7 @@ function TotalCheckout({ setIsDone, paymentWay,setIsLoading }) {
       }),
     )
   }, [])
+  const { t } = useTranslation()
 
   return (
     <div className="total">
@@ -61,12 +64,13 @@ function TotalCheckout({ setIsDone, paymentWay,setIsLoading }) {
               dispatch(actions.zeroTotal())
             })
           }else{
+            toast.error(t('addpaymentmsg'))
             setIsLoading(false)
 
           }
         }}
       >
-        Checkout
+        {t("checkout")}
       </button>
     </div>
   )

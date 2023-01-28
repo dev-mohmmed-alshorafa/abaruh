@@ -1,10 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 function DelivaryDetails({ order }) {
-  console.log(order);
+  const { t } = useTranslation()
   return (
     <div className="delivery">
-      <p>Delivery Address</p>
+      <p>{t("deliveryaddress")}</p>
       <div>
         <span>{order.address.addressName}</span>
       </div>

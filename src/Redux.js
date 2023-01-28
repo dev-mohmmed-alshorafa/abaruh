@@ -13,6 +13,7 @@ const countSlice = createSlice({
     bell: false,
     isLoadingUser: false,
     isAddress: false,
+    lng:"en"
   },
   reducers: {
     protect(state, action) {
@@ -70,6 +71,9 @@ const countSlice = createSlice({
     },
     setIsAddress(state, action) {
       state.isAddress = action.payload
+    },
+    setLng(state, action) {
+      state.lng = action.payload
     },
   },
 })

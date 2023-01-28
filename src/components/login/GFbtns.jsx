@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Apiservices from '../../services/ApiServices'
 import { useTranslation } from 'react-i18next'
+import { Box } from '@mui/system'
 
 function GFbtns() {
   const [a, setA] = useState('')
@@ -13,11 +14,14 @@ function GFbtns() {
       <button onClick={loginWithGoogle}>
         <img src="./icons/google.png" alt="" />
         <p>{t("continegoogle")} </p>
+        <Box sx={{width:'24px'}}></Box>
       </button>
 
       <button>
         <img src="./icons/facebook.png" alt="" />
         <p>{t("continefacebook")} </p>
+        <Box sx={{width:'24px'}}></Box>
+
       </button>
     </div>
   )

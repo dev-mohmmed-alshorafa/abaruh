@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 import Apiservices from '../../services/ApiServices'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 function Address({ setisActive }) {
   const [addresses, setAddresses] = useState([])
@@ -12,11 +14,12 @@ function Address({ setisActive }) {
   }, [])
   const addressId = useSelector((state) => state.address)
   const cart = useSelector((state) => state.checkOutCart)
+  const { t } = useTranslation()
 
   return (
     <div className="checkout-address">
       <section>
-        <p className="title">Address</p>
+        <p className="title">{t('address')}</p>
         <div className="address-c">
           {addresses.map((e) => (
             <div key={e._id} className="name-checkout-address">
@@ -31,24 +34,33 @@ function Address({ setisActive }) {
             </div>
           ))}
 
-          <Link onClick={()=>{  dispatch(actions.setIsAddress(true))
-}} to={'/addresses'}>Add New Address</Link>
+          <Link
+            onClick={() => {
+              dispatch(actions.setIsAddress(true))
+            }}
+            to={'/addresses'}
+          >
+            {t('addaddress')}
+          </Link>
         </div>
       </section>
       {cart.length === 0 ? (
         <Link className="continue" to="/">
-          Back To Home
+          {t('backhome')}
         </Link>
       ) : (
         <button
           onClick={() => {
             if (addressId) {
               setisActive(1)
+            }else{
+              toast.error(t('addaddresspls'));
+
             }
           }}
           className="continue"
         >
-          Continue
+          {t('continue')}
         </button>
       )}
     </div>

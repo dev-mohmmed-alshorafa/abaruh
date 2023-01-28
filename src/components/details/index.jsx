@@ -57,11 +57,11 @@ function DetailsProduct() {
   }
   const ref = useOutsideClick(handleClickOutside)
   const { t } = useTranslation()
-
+const lng=useSelector(e=>e.lng)
   return (
     <div>
       <Link className="back" to={'/'}>
-        <img src="./back.png" alt="" />
+        <img style={{transform:lng==='ar' &&"rotateY(180deg)"}} src="./back.png" alt="" />
       </Link>
       {isloading ? (
         <BigProduct />

@@ -1,5 +1,5 @@
 import React from 'react'
-import Order from '../myOrder'
+import Order from '../myOrder/Order.jsx'
 
 function OrdersItems() {
   const orders=[{

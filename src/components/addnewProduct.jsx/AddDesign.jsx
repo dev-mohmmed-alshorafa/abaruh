@@ -8,9 +8,11 @@ import { Box } from '@mui/system'
 import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
+import { useTranslation } from 'react-i18next'
 
 function AddDesign({ formKind, setIsLoading }) {
   const [color, setColor] = React.useState({})
+  const { t } = useTranslation()
 
   const [colors, setColors] = useState([])
   const handelAddColor = () => {
@@ -20,9 +22,9 @@ function AddDesign({ formKind, setIsLoading }) {
       setColors([color, ...colors])
     }
   }
-  const [category, setCategory] = useState({ name: 'Category', _id: 0 })
+  const [category, setCategory] = useState({ name: t('category'), _id: 0 })
   const [getCategory, setGetCategory] = useState([])
-  const [size, setSize] = useState({ name: 'Size', _id: 0 })
+  const [size, setSize] = useState({ name: t('size'), _id: 0 })
   const [isAdd, setIsAdd] = useState(false)
   useEffect(() => {
     Apiservices.get('/category').then((res) => {
@@ -70,7 +72,7 @@ function AddDesign({ formKind, setIsLoading }) {
   return (
     <form onSubmit={addSuccsess} className="add-product-form">
       <input
-        placeholder="File Name"
+        placeholder={t("filename")}
         value={newProduct.name}
         onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
         type="text"
@@ -80,7 +82,7 @@ function AddDesign({ formKind, setIsLoading }) {
         onChange={(e) =>
           setNewProduct({ ...newProduct, description: e.target.value })
         }
-        placeholder="Description"
+        placeholder={t("description")}
         name=""
         id=""
         cols="30"
@@ -101,7 +103,7 @@ function AddDesign({ formKind, setIsLoading }) {
       />
       <input
         type="number"
-        placeholder="Price"
+        placeholder={t("price")}
         value={newProduct.price}
         onChange={(e) =>
           setNewProduct({ ...newProduct, price: e.target.value })
@@ -142,7 +144,7 @@ function AddDesign({ formKind, setIsLoading }) {
           ))}
         </Stack>
       </Box>
-      <p className="products-images">Product Images </p>
+      <p className="products-images">{t("productimg")} </p>
       <section className="add-images-btns">
         <label htmlFor="img1">
           <img src="./icons/addimage.png" alt="" />
@@ -166,7 +168,7 @@ function AddDesign({ formKind, setIsLoading }) {
           onClick={addSuccsess}
           className="add-to-cart-product"
         >
-          {formKind}{' '}
+          {t("publishdesign")}
         </button>
         {isAdd && <SuccsessText />}
       </div>

@@ -8,13 +8,15 @@ import { Box } from '@mui/system'
 import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
+import { useTranslation } from 'react-i18next'
 
 function AddProductForm({ formKind, setIsLoading }) {
   const [color, setColor] = React.useState({})
+  const { t } = useTranslation()
 
-  const [category, setCategory] = useState({ name: 'Category', _id: 0 })
+  const [category, setCategory] = useState({ name: t('category'), _id: 0 })
   const [getCategory, setGetCategory] = useState([])
-  const [size, setSize] = useState({ name: 'Size', _id: 0 })
+  const [size, setSize] = useState({ name: t('size'), _id: 0 })
   const [colors, setColors] = useState([])
   const handelAddColor = () => {
     if (colors.some((e) => e.hex === color.hex || e.rgba === color.rgba)) {
@@ -66,7 +68,7 @@ function AddProductForm({ formKind, setIsLoading }) {
   return (
     <form onSubmit={addSuccsess} className="add-product-form">
       <input
-        placeholder="File Name"
+        placeholder={t("filename")}
         value={newProduct.name}
         onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
         type="text"
@@ -76,7 +78,7 @@ function AddProductForm({ formKind, setIsLoading }) {
         onChange={(e) =>
           setNewProduct({ ...newProduct, description: e.target.value })
         }
-        placeholder="Description"
+        placeholder={t("description")}
         name=""
         id=""
         cols="30"
@@ -97,7 +99,7 @@ function AddProductForm({ formKind, setIsLoading }) {
       />
       <input
         type="number"
-        placeholder="Price"
+        placeholder={t("price")}
         value={newProduct.price}
         onChange={(e) =>
           setNewProduct({ ...newProduct, price: e.target.value })
@@ -138,7 +140,7 @@ function AddProductForm({ formKind, setIsLoading }) {
           ))}
         </Stack>
       </Box>
-      <p className="products-images">Product Images </p>
+      <p className="products-images">{t("productimg")} </p>
       <section className="add-images-btns">
         <label htmlFor="img1">
           <img src="./icons/addimage.png" alt="" />
@@ -163,7 +165,7 @@ function AddProductForm({ formKind, setIsLoading }) {
           onClick={addSuccsess}
           className="add-to-cart-product"
         >
-          {formKind}{' '}
+          {t("addproduct")}
         </button>
         {isAdd && <SuccsessText />}
       </div>
