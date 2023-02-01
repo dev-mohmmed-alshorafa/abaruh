@@ -6,6 +6,8 @@ import Apiservices from '../../services/ApiServices'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import Loading from '../signLoading'
+import { toast } from 'react-toastify'
+import ProductValid from '../../validation/Product'
 function MerchantProduct({ product }) {
   const [isShow, setIsShow] = useState(false)
   const [updateImg, setUpdateImg] = useState('')
@@ -14,20 +16,27 @@ function MerchantProduct({ product }) {
   const [isLoading,setIsLoading]=useState(false)
   const { t } = useTranslation()
 
-  const handelUpdate = (e) => {
-    e.preventDefault()
-    const newData = new FormData()
-    newData.append('description', isUpdate.description)
-    newData.append('name', isUpdate.name)
-    newData.append('price', isUpdate.price)
-    newData.append('image', updateImg)
-    setIsLoading(true)
-    Apiservices.put(`/product/${myProduct._id}`, newData).then((res) => {
-      setMyProduct(res.data.data)
-      setIsLoading(false)
-
-      setIsShow(false)
-    })
+  const handelUpdate = async(e) => {
+    try {
+      const vaild = await ProductValid.validate(isUpdate)
+      e.preventDefault()
+      const newData = new FormData()
+      newData.append('description', isUpdate.description)
+      newData.append('name', isUpdate.name)
+      newData.append('price', isUpdate.price)
+      newData.append('image', updateImg)
+      setIsLoading(true)
+      Apiservices.put(`/product/${myProduct._id}`, newData).then((res) => {
+        setMyProduct(res.data.data)
+        setIsLoading(false)
+  
+        setIsShow(false)
+      })
+    
+    }catch (err) {
+        toast.error(err.message)
+      }
+   
   }
   const handleClickOutside = () => {
     setIsShow(false)

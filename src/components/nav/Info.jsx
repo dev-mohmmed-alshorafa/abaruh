@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { actions } from '../../Redux'
+import { Box } from '@mui/material'
 
 function Info({ user }) {
   const { t, i18n } = useTranslation()
@@ -15,6 +16,7 @@ function Info({ user }) {
     setIsOn(!isOn)
   }
 
+  const lng=useSelector(e=>e.lng)
   return (
     <div className="info">
       <section
@@ -85,12 +87,12 @@ function Info({ user }) {
           style={{ paddingTop: user && user.role === 'merchant' && '10px' }}
           className="lng"
         >
-          <p>English</p>
-          <div className="lng-btns">
+          <p>{lng ==='ar'?"العربيه":"English"}</p>
+          <Box sx={{flexDirection:lng ==='ar' && 'row-reverse'}}  className="lng-btns">
             <button
               onClick={() => {
                 dispatch(actions.setLng('en'))
-
+                console.log('en');
                 changeLanguage('en')
               }}
             ></button>
@@ -105,8 +107,8 @@ function Info({ user }) {
               style={{ left: isOn === false ? 0 : '20px' }}
               className="span-lng"
             ></span>
-          </div>
-          <p>العربيه</p>
+          </Box>
+          <p>{lng !=='ar'?"العربيه":"English"}</p>
         </div>
       </section>
     </div>

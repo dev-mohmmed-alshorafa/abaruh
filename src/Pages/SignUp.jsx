@@ -6,41 +6,52 @@ import JwtService from '../services/TokenServices'
 import { useDispatch } from 'react-redux'
 import { actions } from '../Redux'
 import Loading from '../components/signLoading'
+import SignUpValid from '../validation/SignUp'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+
 function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
   const i = {
     name: '',
     phoneNumber: '',
+    confirmpassword: '',
     password: '',
     email: '',
   }
   const dispatch = useDispatch()
   const { t } = useTranslation()
-
+  const [isCheck, setIsCheck] = useState(false)
   const [signup, setSignup] = useState(i)
-  const handelSignUp = (e) => {
+  const handelSignUp = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
-    Apiservices.post('/auth/register', signup).then((res) => {
-      if (res.data.token) {
-        JwtService.setToken(res.data.token)
-        dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
-        dispatch(actions.setShowForm(0))
-        setIsLoading(false)
 
-        setSignup(i)
-      } else {
-        setIsLoading(false)
-      }
-    })
+    try {
+      const validated = await SignUpValid.validate(signup)
+      setIsLoading(true)
+      Apiservices.post('/auth/register', signup).then((res) => {
+        if (res.data.token) {
+          JwtService.setToken(res.data.token)
+          dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
+          dispatch(actions.setShowForm(0))
+          setIsLoading(false)
+
+          setSignup(i)
+        } else {
+          setIsLoading(false)
+        }
+      })
+    } catch (err) {
+      toast.error(err.message)
+    }
   }
   return (
     <div className="signup">
       <img className="signup-logo" src="./icons/logo.png" alt="" />
       <form action="">
         <input
-          placeholder={t("name")}
+          className="signup-input"
+          placeholder={t('name')}
           value={signup.name}
           onChange={(e) => setSignup({ ...signup, name: e.target.value })}
           type="text"
@@ -48,38 +59,55 @@ function SignUp() {
         <div className="phone-num">
           <SelectNum />
           <input
+            // className="signup-input"
             value={signup.phoneNumber}
             onChange={(e) =>
               setSignup({ ...signup, phoneNumber: e.target.value })
             }
-            placeholder={t("pnum")}
+            placeholder={t('pnum')}
             type="text"
           />
         </div>
         <input
+          className="signup-input"
           value={signup.email}
           onChange={(e) => setSignup({ ...signup, email: e.target.value })}
-          placeholder={t("emailoptional")}
+          placeholder={t('emailoptional')}
           type="text"
         />
         <input
+          className="signup-input"
           value={signup.password}
           onChange={(e) => setSignup({ ...signup, password: e.target.value })}
-          placeholder={t("password")}
+          placeholder={t('password')}
           type="password"
         />
-        <input           placeholder={t("confirmpassword")}
- type="password" />
+        <input
+          className="signup-input"
+          value={signup.confirmpassword}
+          onChange={(e) =>
+            setSignup({ ...signup, confirmpassword: e.target.value })
+          }
+          placeholder={t('confirmpassword')}
+          type="password"
+        />
         <div className="tearams">
-          <input placeholder="Name" required type="checkbox" name="" id="" />
+          <input
+            placeholder="Name"
+            onChange={() => setIsCheck(!isCheck)}
+            required
+            type="checkbox"
+            name=""
+            id=""
+          />
+
           <p>
-          {t("read")}
- <span>          {t("team")}
-</span>
+            {t('read')}
+            <span> {t('team')}</span>
           </p>
         </div>
         <button onClick={handelSignUp} className="signup-btn">
-          {t("signup")}
+          {t('signup')}
         </button>
       </form>
       {isLoading && <Loading />}

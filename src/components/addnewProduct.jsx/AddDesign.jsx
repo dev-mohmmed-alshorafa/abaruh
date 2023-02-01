@@ -9,6 +9,8 @@ import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import ProductValid from '../../validation/Product'
 
 function AddDesign({ formKind, setIsLoading }) {
   const [color, setColor] = React.useState({})
@@ -41,10 +43,19 @@ function AddDesign({ formKind, setIsLoading }) {
     description: '',
     price: '',
   })
-  const addSuccsess = (Event) => {
-    const newData = new FormData()
+  const addSuccsess = async(Event) => {
+    if(!img ){
+      return toast.error('please add image')
+    }  if(size._id===0 ){
+      return toast.error('please add size')
+    }  if(category===0 ){
+      return toast.error('please add category')
+    }
+    try{
+      const vaild= await ProductValid.validate(newProduct)
+
+      const newData = new FormData()
     newData.append('image', img)
-    // newData.append('data', JSON.stringify(newProduct))
     newData.append('name', newProduct.name)
     newData.append('category', category._id)
     newData.append('Sizes', size.name)
@@ -66,6 +77,11 @@ function AddDesign({ formKind, setIsLoading }) {
         price: '',
       })
     })
+    }catch(err){
+      toast.error(err.message)
+
+    }
+    
   }
 
   const ref = useOutsideClick(handleClickOutside)

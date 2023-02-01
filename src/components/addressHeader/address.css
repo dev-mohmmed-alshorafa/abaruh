@@ -114,6 +114,7 @@ color: var(--main-color);
   padding: 15px;
   border-radius: 12px;
   width: 80%;
+  max-width: 400px;
 }
 .edit-address-form p{
   text-align: center;

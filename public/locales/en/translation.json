@@ -87,6 +87,11 @@
 "addpaymentmsg":"add payment method please !",
 "detailsaddressmsg":"Please make sure to fill out all the information",
 "fillfeild":"Please fill in all fields !",
-"datainfo":"The login parameters are incorrect !"
+"datainfo":"The login parameters are incorrect !",
+"namevalid":"Please enter a valid name",
+"numvalid":"The phone number must consist of at least 6 digits",
+"passwordreqvalid":"You did not enter the password",
+"passwordshortvalid":"The password is short, it must consist of at least 8 characters",
+"passwordsmatch":"Passwords are not equal"
 
 }

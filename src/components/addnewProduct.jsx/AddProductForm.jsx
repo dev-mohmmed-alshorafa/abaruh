@@ -9,6 +9,8 @@ import AddIcon from '@mui/icons-material/Add'
 import { Stack } from '@mui/system'
 import Color from '../colors'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import ProductValid from '../../validation/Product'
 
 function AddProductForm({ formKind, setIsLoading }) {
   const [color, setColor] = React.useState({})
@@ -42,33 +44,50 @@ function AddProductForm({ formKind, setIsLoading }) {
     price: '',
   })
 
-  const addSuccsess = (Event) => {
-    const newData = new FormData()
-    newData.append('image', img)
-    // newData.append('color', colors)
-    newData.append('name', newProduct.name)
-    newData.append('category', category._id)
-    newData.append('Sizes', size.name)
-    newData.append('Quantity', 11)
-    newData.append('price', newProduct.price)
-    newData.append('description', newProduct.description)
-    newData.append('Industry', '11')
+  const addSuccsess = async (Event) => {
+    if (!img) {
+      return toast.error('please add image')
+    }
+    if (size._id === 0) {
+      return toast.error('please add size')
+    }
+    if (category === 0) {
+      return toast.error('please add category')
+    }
+    if (colors.length === 0) {
+      return toast.error('please add color')
+    }
+    try {
+      const vaild = await ProductValid.validate(newProduct)
+      const newData = new FormData()
+      newData.append('image', img)
+      // newData.append('color', colors)
+      newData.append('name', newProduct.name)
+      newData.append('category', category._id)
+      newData.append('Sizes', size.name)
+      newData.append('Quantity', 11)
+      newData.append('price', newProduct.price)
+      newData.append('description', newProduct.description)
+      newData.append('Industry', '11')
 
-    Event.preventDefault()
-    setIsLoading(true)
-    Apiservices.post('/product', newData)
-      .then(() => {
-        setIsLoading(false)
-        setIsAdd(true)
-      })
-      .catch((err) => setIsLoading(false))
+      Event.preventDefault()
+      setIsLoading(true)
+      Apiservices.post('/product', newData)
+        .then(() => {
+          setIsLoading(false)
+          setIsAdd(true)
+        })
+        .catch((err) => setIsLoading(false))
+    } catch (err) {
+      toast.error(err.message)
+    }
   }
 
   const ref = useOutsideClick(handleClickOutside)
   return (
     <form onSubmit={addSuccsess} className="add-product-form">
       <input
-        placeholder={t("filename")}
+        placeholder={t('filename')}
         value={newProduct.name}
         onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
         type="text"
@@ -78,7 +97,7 @@ function AddProductForm({ formKind, setIsLoading }) {
         onChange={(e) =>
           setNewProduct({ ...newProduct, description: e.target.value })
         }
-        placeholder={t("description")}
+        placeholder={t('description')}
         name=""
         id=""
         cols="30"
@@ -99,7 +118,7 @@ function AddProductForm({ formKind, setIsLoading }) {
       />
       <input
         type="number"
-        placeholder={t("price")}
+        placeholder={t('price')}
         value={newProduct.price}
         onChange={(e) =>
           setNewProduct({ ...newProduct, price: e.target.value })
@@ -140,7 +159,7 @@ function AddProductForm({ formKind, setIsLoading }) {
           ))}
         </Stack>
       </Box>
-      <p className="products-images">{t("productimg")} </p>
+      <p className="products-images">{t('productimg')} </p>
       <section className="add-images-btns">
         <label htmlFor="img1">
           <img src="./icons/addimage.png" alt="" />
@@ -165,7 +184,7 @@ function AddProductForm({ formKind, setIsLoading }) {
           onClick={addSuccsess}
           className="add-to-cart-product"
         >
-          {t("addproduct")}
+          {t('addproduct')}
         </button>
         {isAdd && <SuccsessText />}
       </div>

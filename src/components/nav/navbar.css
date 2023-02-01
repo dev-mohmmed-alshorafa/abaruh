@@ -326,6 +326,7 @@
   display: flex;
   flex-direction: column;
   gap: 35px;
+  padding-top: 50px;
   justify-content: center;
 }
 .signs{
@@ -341,7 +342,7 @@
 
 @media (min-width: 700px) {
   .menu-active {
-    width: 25%;
+    width: 289px;
     overflow-y: scroll;
   }
   .menu-active::-webkit-scrollbar {
@@ -355,7 +356,8 @@
     background-color: rgba(169, 169, 169, 0);
   }
   .logout {
-    width: 70% !important;
+    /* width: 100% !important; */
+    /* margin:  auto; */
   }
 
   .navbar {
@@ -373,7 +375,7 @@
     width: 50px;
   }
 
-  .navbar button img {
+  /* .navbar button img {
     width: 40px;
   }
 
@@ -387,7 +389,7 @@
 
   .cart img {
     width: 40px;
-  }
+  } */
 
   .mune-Item {
     width: 80px;

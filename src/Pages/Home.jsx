@@ -11,7 +11,7 @@ import Factory from './Factory'
 
 function Home() {
   const [products, setProducts] = useState([])
-  const [categoryId, setCategoryId] = useState('63b9a8a2b64c3cc3a87ca1b1')
+  const [categoryId, setCategoryId] = useState('')
   const [textSearch, setTextSearch] = useState('')
   const user = useSelector((state) => state.user)
   const isLoadingUser = useSelector((state) => state.isLoadingUser)
@@ -22,11 +22,18 @@ function Home() {
     dispatch(actions.showBell(false))
   }, [])
   useEffect(() => {
-    setIsLoading(true)
-    Apiservices.get(`/product?category=${categoryId}`).then((res) => {
-      setProducts(res.data.data)
-      setIsLoading(false)
+    Apiservices.get('/category').then((res) => {
+      setCategoryId(res.data.data[0]._id)
     })
+  }, [])
+  useEffect(() => {
+    setIsLoading(true)
+    if (categoryId) {
+      Apiservices.get(`/product?category=${categoryId}`).then((res) => {
+        setProducts(res.data.data)
+        setIsLoading(false)
+      })
+    }
   }, [categoryId])
   return (
     <div className="home">
@@ -42,7 +49,9 @@ function Home() {
         <>
           <MyProducts />
         </>
-      ) :user && user.role === 'factory' ?<Factory/>: (
+      ) : user && user.role === 'factory' ? (
+        <Factory />
+      ) : (
         <HomeForUser
           isloading={isloading}
           products={products}

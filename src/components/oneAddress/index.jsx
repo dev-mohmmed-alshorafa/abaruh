@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Apiservices from '../../services/ApiServices'
 import useOutsideClick from '../../hook/UseOutsideClick'
+import AddressValid from '../../validation/Address'
+import { toast } from 'react-toastify'
 function OneAddress({ address, allAddress, setAllAddress }) {
   const [isUpDate, setIsUpdate] = useState(false)
   const handelDeleteAddress = () => {
@@ -16,10 +18,17 @@ function OneAddress({ address, allAddress, setAllAddress }) {
   const openEdit = () => {
     setIsUpdate(true)
   }
-  const handelEdit=(e)=>{
+  const handelEdit= async(e)=>{
     setIsUpdate(false)
 e.preventDefault()
-Apiservices.put(`/address/${address._id}`,addressForm).then(()=>setMyAddress(addressForm))
+try{
+  const vaild= await AddressValid.validate(addressForm)
+  Apiservices.put(`/address/${address._id}`,addressForm).then(()=>setMyAddress(addressForm))
+
+}catch(err){
+  toast.error(err.message)
+
+}
 
 
   }

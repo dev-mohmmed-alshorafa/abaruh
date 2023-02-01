@@ -5,6 +5,7 @@ import JwtService from '../../services/TokenServices'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
+import SignInValid from '../../validation/SignIn'
 
 function LoginForm({ setIsLoading }) {
   const i = {
@@ -14,32 +15,36 @@ function LoginForm({ setIsLoading }) {
   const dispatch = useDispatch()
 
   const [login, setLogin] = useState(i)
-  const handelLogin = (e) => {
-    setIsLoading(true)
+  const handelLogin = async(e) => {
     e.preventDefault()
-    if (!login.password || !login.phoneNumber) {
-      setIsLoading(false)
+try{
+  const validated = await SignInValid.validate(login)
+  setIsLoading(true)
 
-      return toast.error(t('fillfeild'))
-    }
-    Apiservices.post('/auth/login', login).then((res) => {
+  
+  Apiservices.post('/auth/login', login).then((res) => {
       
-      if (res.data.token) {
-        JwtService.setToken(res.data.token)
-        dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
-        dispatch(actions.setShowForm(0))
-        setLogin(i)
-        setIsLoading(false)
-      } else {
-        setIsLoading(false)
-
-        console.log(111)
-      }
-    }).catch(()=>{
+    if (res.data.token) {
+      JwtService.setToken(res.data.token)
+      dispatch(actions.protect({ ...res.data.data, _id: res.data.data.id }))
+      dispatch(actions.setShowForm(0))
+      setLogin(i)
+      setIsLoading(false)
+    } else {
       setIsLoading(false)
 
-      toast.error(t('datainfo'))
-    })
+      console.log(111)
+    }
+  }).catch(()=>{
+    setIsLoading(false)
+
+    toast.error(t('datainfo'))
+  })
+}catch (err) {
+  toast.error(err.message)
+}
+  
+  
   }
   const { t } = useTranslation()
   return (

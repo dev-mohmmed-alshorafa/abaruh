@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { actions } from '../../Redux'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
+import AddressValid from '../../validation/Address'
 function Form() {
   const dispatch = useDispatch()
   const { t } = useTranslation()
@@ -16,10 +17,14 @@ function Form() {
     address: '',
     city: '',
   })
-  const addAddress = (e) => {
-    setIsLoading(true)
+  const addAddress = async (e) => {
     e.preventDefault()
-    if (addressForm.addressName && addressForm.address && addressForm.city) {
+
+    try {
+      const addressVailed = await AddressValid.validate(addressForm)
+
+      setIsLoading(true)
+
       Apiservices.post('/address', addressForm).then(() => {
         dispatch(actions.setIsAddress(false))
         setIsLoading(false)
@@ -29,16 +34,15 @@ function Form() {
           city: '',
         })
       })
-    } else {
-      toast.error(t('detailsaddressmsg'))
-      setIsLoading(false)
+    } catch (err) {
+      toast.error(err.message)
     }
   }
   return (
     <form className="add-address-form">
       <div className="inputs">
         <input
-          placeholder={t("addressname")}
+          placeholder={t('addressname')}
           value={addressForm.addressName}
           onChange={(e) =>
             setAddressForm({ ...addressForm, addressName: e.target.value })
@@ -47,7 +51,7 @@ function Form() {
           required
         />
         <input
-          placeholder={t("address")}
+          placeholder={t('address')}
           value={addressForm.address}
           onChange={(e) =>
             setAddressForm({ ...addressForm, address: e.target.value })
@@ -56,7 +60,7 @@ function Form() {
           required
         />
         <input
-          placeholder={t("city")}
+          placeholder={t('city')}
           value={addressForm.city}
           onChange={(e) =>
             setAddressForm({ ...addressForm, city: e.target.value })
@@ -66,7 +70,7 @@ function Form() {
         />
       </div>
       <button onClick={addAddress} to={'/addresses'}>
-        {t("submit")}
+        {t('submit')}
       </button>
       {isLoading && <Loading />}
     </form>
