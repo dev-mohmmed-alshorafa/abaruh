@@ -8,6 +8,8 @@ function SelectNum() {
       <PhoneInput
         international
         defaultCountry="SA"
+        addInternationalOption={false}
+
         value={value}
         onChange={setValue}
         countries={['SA']}
